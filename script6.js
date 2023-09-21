@@ -405,7 +405,7 @@ const IncomTax = [
     annualKms.addEventListener('input', updateAllValues)
     driveAway.addEventListener('input', updateAllValues)
     document.getElementById('monthly-budget').classList.add('close')
-    
+    updateAllValues()
     document.getElementById('custom-budget').addEventListener('click', ()=>{
     	document.getElementById('monthly-budget').classList.toggle('close')
     })
