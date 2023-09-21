@@ -331,9 +331,9 @@ const IncomTax = [
                             METHOD==='FBT Exempt Method'? GST_POST_TAX_EXEMPT :
                             METHOD==='Operating Cost Method'? GST_POST_TAX_OPERATING : 0
 
-            console.log('PreTax',PreTax);
-            console.log('PostTax',PostTax);
-            console.log('GSTPostTax',GSTPostTax);
+            console.log('PRE_TAX_OPERATING',PRE_TAX_OPERATING);
+            console.log('POST_TAX_OPERATING',POST_TAX_OPERATING);
+            console.log('GST_POST_TAX_OPERATING',GST_POST_TAX_OPERATING);
             
             const TaxSavings = (incomeTaxWR - incomeTaxAR)
             const MonthlyTaxSavings = TaxSavings / 12
