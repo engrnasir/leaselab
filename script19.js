@@ -122,13 +122,13 @@ const IncomTax = [
             packages.forEach(el => el.classList.remove('active'))
             if(leaseTerm.value<3){
                 packages[0].classList.add('active')
-                document.getElementById('package-small-price').innerHTML = LEASE_PAYMERNT_PER_MONTH
+                document.getElementById('package-small-price').innerHTML = `$${LEASE_PAYMERNT_PER_MONTH.toFixed(0)}pm`
             }else if(leaseTerm.value>3){
                 packages[2].classList.add('active')
-                document.getElementById('package-large-price').innerHTML = LEASE_PAYMERNT_PER_MONTH
+                document.getElementById('package-large-price').innerHTML = `$${LEASE_PAYMERNT_PER_MONTH.toFixed(0)}pm`
             }else{
                 packages[1].classList.add('active')
-                document.getElementById('package-medium-price').innerHTML = LEASE_PAYMERNT_PER_MONTH
+                document.getElementById('package-medium-price').innerHTML = `$${LEASE_PAYMERNT_PER_MONTH.toFixed(0)}pm`
             }
 
 
