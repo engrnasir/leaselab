@@ -188,15 +188,6 @@ const IncomTax = [
             
             const   GrossTaxableValue = ((VehicleBaseValue*StatutoryRate)/FBTDays*FBTYear)-((VehicleBaseValue*StatutoryRate)/MinimumThreshold*DaysUnavailableforPrivateUse)
 
-            console.log('LeasePayment',LeasePayment)
-            console.log('MonthlyRunningCost',MonthlyRunningCost)
-            console.log('VehicleBaseValue',VehicleBaseValue)
-            console.log('StatutoryRate',StatutoryRate)
-            console.log('FBTDays',FBTDays)
-            console.log('FBTYear',FBTYear)
-            console.log('MinimumThreshold',MinimumThreshold)
-            console.log('GrossTaxableValue',GrossTaxableValue)
-
             const  FBTGrossedUpMultiplier = assumptions.FBTGrossedUpMultiplier
             const FullGrossedUpTaxableAmount = GrossTaxableValue * FBTGrossedUpMultiplier
             const NonExemptGrossedupAmount = FullGrossedUpTaxableAmount
@@ -380,13 +371,13 @@ async function  updateAllValues(){
     await calculateLeasePayment()
     await calculateFBTExempt()
     await calculateFBTStatutory()
-    // await calculateFBTOperatingCost()
-    // await calculateIncomeTax()
-    // await calculateIncomeTax('statutory')
-    // await calculateIncomeTax('exempt')
-    // await calculateIncomeTax('operating')
+    await calculateFBTOperatingCost()
+    await calculateIncomeTax()
+    await calculateIncomeTax('statutory')
+    await calculateIncomeTax('exempt')
+    await calculateIncomeTax('operating')
     
-    // await calculateSaving()
+    await calculateSaving()
     
     document.getElementById('savings').innerHTML = TOTAL_SAVING_MONTHLY?TOTAL_SAVING_MONTHLY:0
   }
