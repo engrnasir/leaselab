@@ -204,7 +204,7 @@ const IncomTax = [
 
             
             const  PreTaxContribution = FringeBenefitValueExGST - PostTaxEmployeeContributionMade
-
+            console.log('calculateFBTStatutory -> PreTaxContribution : ', PreTaxContribution);
             const  EmployeeFBTLiability = 0
 
             const  FBTTaxAmount = NonExemptGrossedupAmount * assumptions.FBTRate
