@@ -390,9 +390,9 @@ async function  updateAllValues(){
     document.getElementById('savings').innerHTML = TOTAL_SAVING_MONTHLY?TOTAL_SAVING_MONTHLY.toFixed(2):0
 
     if(leaseTerm.value<3){
-        document.getElementById('package-small-savings').innerText = TOTAL_SAVING_ANNUAL
+        document.getElementById('package-small-savings').innerText =`Up to $${TOTAL_SAVING_ANNUAL.toFixed(2)} Saved`
     }else{
-        document.getElementById('package-large-savings').innerText = TOTAL_SAVING_ANNUAL
+        document.getElementById('package-large-savings').innerText = `Up to $${TOTAL_SAVING_ANNUAL.toFixed(2)} Saved`
 
     }
   }
