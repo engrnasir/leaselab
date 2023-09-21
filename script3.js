@@ -358,7 +358,7 @@ const IncomTax = [
             console.log('COST_PER_MONTH',COST_PER_MONTH);
             console.log('COST_PER_WEEK',COST_PER_WEEK);
             console.log('OVERALL_GST_SAVING',OVERALL_GST_SAVING);
-            console.log('OVERALL_INCOME_TAX_SAVING',COSOVERALL_INCOME_TAX_SAVINGT_PER_MONTH);
+            console.log('OVERALL_INCOME_TAX_SAVING',OVERALL_INCOME_TAX_SAVING);
             console.log('TOTAL_SAVING_OVERALL',TOTAL_SAVING_OVERALL);
             console.log('TOTAL_SAVING_ANNUAL',TOTAL_SAVING_ANNUAL);
             console.log('TOTAL_SAVING_MONTHLY',TOTAL_SAVING_MONTHLY);
