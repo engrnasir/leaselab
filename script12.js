@@ -145,13 +145,13 @@ const IncomTax = [
                 return -(numerator / denominator);
             }
         function calculateMonthlyRunningCost (){
-            const electricityVal = parseFloat(electricityInput.value)
-            const maintenanceVal = parseFloat(maintenanceInput.value)
-            const insuranceVal = parseFloat(insuranceInput.value)
-            const registrationVal = parseFloat(registrationInput.value)
-            const tyresVal = parseFloat(tyresInput.value)
-            const roadsideVal = parseFloat(roadsideInput.value)
-            const otherVal = parseFloat(otherInput.value)
+            const electricityVal = parseFloat(electricityInput.value?electricityInput.value: 85.90)
+            const maintenanceVal = parseFloat(maintenanceInput.value?maintenanceInput.value:  48.75)
+            const insuranceVal = parseFloat(insuranceInput.value?insuranceInput.value: 148.64)
+            const registrationVal = parseFloat(registrationInput.value?registrationInput.value:  57.60)
+            const tyresVal = parseFloat(tyresInput.value?tyresInput.value: 32.40)
+            const roadsideVal = parseFloat(roadsideInput.value?roadsideInput.value:  29.44)
+            const otherVal = parseFloat(otherInput.value?otherInput.value:  6.15)
             const leaseManagement = 39
 
             return electricityVal + maintenanceVal + insuranceVal + registrationVal + tyresVal + roadsideVal + otherVal + leaseManagement
