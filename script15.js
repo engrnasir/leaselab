@@ -154,6 +154,14 @@ const IncomTax = [
             const otherVal = parseFloat(otherInput.value?otherInput.value:  6.15)
             const leaseManagement = 39
 
+            electricityInput.value = electricityVal
+            maintenanceInput.value = maintenanceVal
+            insuranceInput.value = insuranceVal
+            registrationInput.value = registrationVal
+            tyresInput.value = tyresVal
+            roadsideInput.value = roadsideVal
+            otherInput.value = otherVal
+            
             return electricityVal + maintenanceVal + insuranceVal + registrationVal + tyresVal + roadsideVal + otherVal + leaseManagement
         }
 
@@ -379,7 +387,7 @@ async function  updateAllValues(){
     
     await calculateSaving()
     
-    document.getElementById('savings').innerHTML = TOTAL_SAVING_MONTHLY?TOTAL_SAVING_MONTHLY:0
+    document.getElementById('savings').innerHTML = TOTAL_SAVING_MONTHLY?TOTAL_SAVING_MONTHLY.toFixed(2):0
   }
 
   function initialize(){
@@ -387,6 +395,8 @@ async function  updateAllValues(){
     taxableSlider.addEventListener('input', updateAllValues)
     annualKms.addEventListener('input', updateAllValues)
     driveAway.addEventListener('input', updateAllValues)
+
+
     document.getElementById('monthly-budget').classList.add('close')
     updateAllValues()
     document.getElementById('custom-budget').addEventListener('click', ()=>{
