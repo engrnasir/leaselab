@@ -304,6 +304,67 @@ const IncomTax = [
 
 
 
+        //Calculating Savings
+
+        function calculateSaving(){
+
+            const incomeTaxWR = INCOME_TAX_WITHOUT_RENOVATION //Z5
+            const incomeTaxAR = METHOD==='Without Renovation'? INCOME_TAX_WITHOUT_RENOVATION :
+                                METHOD==='Statutory Method'? INCOME_TAX_STATUTORY :
+                                METHOD==='FBT Exempt Method'? INCOME_TAX_EXEMPT :
+                                METHOD==='Operating Cost Method'? INCOME_TAX_OPERATING :INCOME_TAX_WITHOUT_RENOVATION
+
+
+            const PreTax =  METHOD==='Without Renovation'? 0 :
+                            METHOD==='Statutory Method'? PRE_TAX_STATUTORY :
+                            METHOD==='FBT Exempt Method'? PRE_TAX_EXEMPT :
+                            METHOD==='Operating Cost Method'? PRE_TAX_OPERATING : 0
+
+            const PostTax = METHOD==='Without Renovation'? 0 :
+                            METHOD==='Statutory Method'? POST_TAX_STATUTORY :
+                            METHOD==='FBT Exempt Method'? POST_TAX_EXEMPT :
+                            METHOD==='Operating Cost Method'? POST_TAX_OPERATING : 0
+
+            const GSTPostTax = METHOD==='Without Renovation'? 0 :
+                            METHOD==='Statutory Method'? GST_POST_TAX_STATUTORY :
+                            METHOD==='FBT Exempt Method'? GST_POST_TAX_EXEMPT :
+                            METHOD==='Operating Cost Method'? GST_POST_TAX_OPERATING : 0
+            
+            const TaxSavings = (incomeTaxWR - incomeTaxAR)
+            const MonthlyTaxSavings = TaxSavings / 12
+
+            COST_PER_MONTH = PreTax + PostTax - MonthlyTaxSavings
+            
+            const preTaxPerWeek = PreTax / 52
+            const postTaxPerWeek = PostTax / 52
+            const WeeklyTaxSavings = TaxSavings / 52
+
+            COST_PER_WEEK = preTaxPerWeek + postTaxPerWeek - WeeklyTaxSavings
+
+            const LeasePayment = calculateLeasePayment();               
+            const MonthlyRunningCost = calculateMonthlyRunningCost()  
+            const LeaseRunnngCostMonthly =  LeasePayment+ MonthlyRunningCost //z20
+            const GSTSavingsMonthly = LeaseRunnngCostMonthly*0.1 //z21
+            const GSTPostTaxDeductionMonthly = GSTPostTax/12 //z22
+
+            OVERALL_GST_SAVING = ((GSTSavingsMonthly-GSTPostTaxDeductionMonthly)*LEASE_PERIOD)+CLAIMABLE_TAX
+
+            OVERALL_INCOME_TAX_SAVING = MonthlyTaxSavings*LEASE_PERIOD
+
+            TOTAL_SAVING_OVERALL = OVERALL_INCOME_TAX_SAVING+OVERALL_GST_SAVING
+            TOTAL_SAVING_ANNUAL = TOTAL_SAVING_OVERALL/LEASE_PERIOD*12
+            TOTAL_SAVING_MONTHLY = TOTAL_SAVING_OVERALL/LEASE_PERIOD
+
+            console.log('COST_PER_MONTH',COST_PER_MONTH);
+            console.log('COST_PER_WEEK',COST_PER_WEEK);
+            console.log('OVERALL_GST_SAVING',OVERALL_GST_SAVING);
+            console.log('OVERALL_INCOME_TAX_SAVING',COSOVERALL_INCOME_TAX_SAVINGT_PER_MONTH);
+            console.log('TOTAL_SAVING_OVERALL',TOTAL_SAVING_OVERALL);
+            console.log('TOTAL_SAVING_ANNUAL',TOTAL_SAVING_ANNUAL);
+            console.log('TOTAL_SAVING_MONTHLY',TOTAL_SAVING_MONTHLY);
+            
+        }
+        
 
 
   function updateAllValues(){
