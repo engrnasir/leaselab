@@ -1,21 +1,21 @@
 window.addEventListener('load',()=>{
  let NET_VEHICLE_GST = 0;
-  let LEASE_PAYMERNT_PER_MONTH = NaN
+  let LEASE_PAYMERNT_PER_MONTH = 0
   let CLAIMABLE_TAX = 0
   let LEASE_PERIOD = 0
-  let INCOME_TAX_WITHOUT_RENOVATION = NaN
-  let INCOME_TAX_STATUTORY =NaN
-  let INCOME_TAX_EXEMPT = NaN
-  let INCOME_TAX_OPERATING = NaN
-  let PRE_TAX_EXEMPT = NaN;
-  let PRE_TAX_STATUTORY = NaN;
-  let PRE_TAX_OPERATING = NaN;
-  let POST_TAX_EXEMPT = NaN;
-  let POST_TAX_STATUTORY = NaN;
-  let POST_TAX_OPERATING = NaN;
-  let GST_POST_TAX_EXEMPT = NaN;
-  let GST_POST_TAX_STATUTORY = NaN;
-  let GST_POST_TAX_OPERATING = NaN;
+  let INCOME_TAX_WITHOUT_RENOVATION = 0
+  let INCOME_TAX_STATUTORY = 0
+  let INCOME_TAX_EXEMPT = 0
+  let INCOME_TAX_OPERATING = 0
+  let PRE_TAX_EXEMPT = 0;
+  let PRE_TAX_STATUTORY = 0;
+  let PRE_TAX_OPERATING = 0;
+  let POST_TAX_EXEMPT = 0;
+  let POST_TAX_STATUTORY = 0;
+  let POST_TAX_OPERATING = 0;
+  let GST_POST_TAX_EXEMPT = 0;
+  let GST_POST_TAX_STATUTORY = 0;
+  let GST_POST_TAX_OPERATING = 0;
   let COST_PER_MONTH = 0
   let COST_PER_WEEK = 0
   
@@ -374,7 +374,7 @@ const IncomTax = [
         
 
 
-  function updateAllValues(){
+async function  updateAllValues(){
     GROSS_INCOME =   parseFloat(taxableSlider.value)
     console.log('GROSS_INCOME',GROSS_INCOME)
   	taxableSliderValue.innerHTML = taxableSlider.value
@@ -382,14 +382,14 @@ const IncomTax = [
     leaseTermValue.innerHTML = leaseTerm.value
     driveAwayValue.innerHTML = driveAway.value
     
-    calculateLeasePayment()
-    calculateFBTExempt()
-    calculateFBTStatutory()
-    calculateFBTOperatingCost()
-    calculateIncomeTax()
-    calculateIncomeTax('statutory')
-    calculateIncomeTax('exempt')
-    calculateIncomeTax('operating')
+    await calculateLeasePayment()
+    await calculateFBTExempt()
+    await calculateFBTStatutory()
+    await calculateFBTOperatingCost()
+    await calculateIncomeTax()
+    await calculateIncomeTax('statutory')
+    await calculateIncomeTax('exempt')
+    await calculateIncomeTax('operating')
     
     calculateSaving()
     
