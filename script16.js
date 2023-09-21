@@ -396,6 +396,14 @@ async function  updateAllValues(){
     annualKms.addEventListener('input', updateAllValues)
     driveAway.addEventListener('input', updateAllValues)
 
+    electricityInput.addEventListener('input', updateAllValues)
+    maintenanceInput.addEventListener('input', updateAllValues)
+    insuranceInput.addEventListener('input', updateAllValues)
+    registrationInput.addEventListener('input', updateAllValues)
+    tyresInput.addEventListener('input', updateAllValues)
+    roadsideInput.addEventListener('input', updateAllValues)
+    otherInput.addEventListener('input', updateAllValues)
+
 
     document.getElementById('monthly-budget').classList.add('close')
     updateAllValues()
