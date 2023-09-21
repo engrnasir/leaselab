@@ -371,10 +371,10 @@ const IncomTax = [
 
 async function  updateAllValues(){
     GROSS_INCOME =   parseFloat(taxableSlider.value)
-  	taxableSliderValue.innerHTML = taxableSlider.value
-    annualKmsValue.innerHTML = annualKms.value
-    leaseTermValue.innerHTML = leaseTerm.value
-    driveAwayValue.innerHTML = driveAway.value
+  	taxableSliderValue.innerHTML = `$${taxableSlider.value}/year`
+    annualKmsValue.innerHTML = `$${annualKms.value} km's`
+    leaseTermValue.innerHTML = `$${leaseTerm.value} Years`
+    driveAwayValue.innerHTML = `$${driveAway.value}`
     
     await calculateLeasePayment()
     await calculateFBTExempt()
