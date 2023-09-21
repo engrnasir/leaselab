@@ -313,7 +313,9 @@ const IncomTax = [
                                 METHOD==='Statutory Method'? INCOME_TAX_STATUTORY :
                                 METHOD==='FBT Exempt Method'? INCOME_TAX_EXEMPT :
                                 METHOD==='Operating Cost Method'? INCOME_TAX_OPERATING :INCOME_TAX_WITHOUT_RENOVATION
-
+            
+            console.log('incomeTaxWR',incomeTaxWR);
+            console.log('incomeTaxAR',incomeTaxAR);
 
             const PreTax =  METHOD==='Without Renovation'? 0 :
                             METHOD==='Statutory Method'? PRE_TAX_STATUTORY :
