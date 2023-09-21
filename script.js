@@ -121,7 +121,6 @@ const IncomTax = [
             
             LEASE_PAYMERNT_PER_MONTH = parseFloat(LEASE_PAYMERNT_PER_MONTH.toFixed(2))
 
-            document.getElementById('result').innerHTML = LEASE_PAYMERNT_PER_MONTH
 
             const packages = document.querySelectorAll('.package')
             packages.forEach(el => el.classList.remove('active'))
