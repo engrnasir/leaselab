@@ -170,11 +170,6 @@ const IncomTax = [
             POST_TAX_EXEMPT = 0
             GST_POST_TAX_EXEMPT = 0
 
-            console.log('LeasePayment',LeasePayment);
-            console.log('MonthlyRunningCost',MonthlyRunningCost);
-            console.log('PreTaxContribution',PreTaxContribution);
-            console.log('PRE_TAX_EXEMPT',PRE_TAX_EXEMPT);
-
             return PRE_TAX_EXEMPT
         }
         function calculateFBTStatutory(){
@@ -193,7 +188,14 @@ const IncomTax = [
             
             const   GrossTaxableValue = ((VehicleBaseValue*StatutoryRate)/FBTDays*FBTYear)-((VehicleBaseValue*StatutoryRate)/MinimumThreshold*DaysUnavailableforPrivateUse)
 
-           
+            console.log('LeasePayment',LeasePayment)
+            console.log('MonthlyRunningCost',MonthlyRunningCost)
+            console.log('VehicleBaseValue',VehicleBaseValue)
+            console.log('StatutoryRate',StatutoryRate)
+            console.log('FBTDays',FBTDays)
+            console.log('FBTYear',FBTYear)
+            console.log('MinimumThreshold',MinimumThreshold)
+            console.log('GrossTaxableValue',GrossTaxableValue)
 
             const  FBTGrossedUpMultiplier = assumptions.FBTGrossedUpMultiplier
             const FullGrossedUpTaxableAmount = GrossTaxableValue * FBTGrossedUpMultiplier
@@ -377,7 +379,7 @@ async function  updateAllValues(){
     
     await calculateLeasePayment()
     await calculateFBTExempt()
-    // await calculateFBTStatutory()
+    await calculateFBTStatutory()
     // await calculateFBTOperatingCost()
     // await calculateIncomeTax()
     // await calculateIncomeTax('statutory')
