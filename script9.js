@@ -212,6 +212,7 @@ const IncomTax = [
             PRE_TAX_STATUTORY = parseFloat(PreTaxContribution.toFixed(2))
             POST_TAX_STATUTORY = PostTaxEmployeeContributionMade
             GST_POST_TAX_STATUTORY = GSTIncludedInPostTaxContribution
+            console.log('calculateFBTStatutory -> PRE_TAX_STATUTORY : ', PRE_TAX_STATUTORY);
 
             return PRE_TAX_STATUTORY;
         }
@@ -242,6 +243,8 @@ const IncomTax = [
             PRE_TAX_OPERATING = parseFloat(PreTaxContribution.toFixed(2))
             POST_TAX_OPERATING = PostTaxEmployeeContributionMade
             GST_POST_TAX_OPERATING = GSTIncludedInPostTaxContribution
+
+            console.log('calculateFBTOperatingCost -> PRE_TAX_OPERATING : ', PRE_TAX_OPERATING);
 
             return PRE_TAX_OPERATING
 
@@ -331,7 +334,7 @@ const IncomTax = [
                             METHOD==='FBT Exempt Method'? GST_POST_TAX_EXEMPT :
                             METHOD==='Operating Cost Method'? GST_POST_TAX_OPERATING : 0
 
-            console.log('PRE_TAX_OPERATING',PRE_TAX_OPERATING);
+            console.log('calculateSaving -> PRE_TAX_OPERATING',PRE_TAX_OPERATING);
             console.log('POST_TAX_OPERATING',POST_TAX_OPERATING);
             console.log('GST_POST_TAX_OPERATING',GST_POST_TAX_OPERATING);
             
@@ -391,7 +394,7 @@ async function  updateAllValues(){
     await calculateIncomeTax('exempt')
     await calculateIncomeTax('operating')
     
-    calculateSaving()
+    await calculateSaving()
     
     console.log('NET_VEHICLE_GST',NET_VEHICLE_GST)
     console.log('TOTAL_SAVING_MONTHLY',TOTAL_SAVING_MONTHLY)
