@@ -314,8 +314,7 @@ const IncomTax = [
                                 METHOD==='FBT Exempt Method'? INCOME_TAX_EXEMPT :
                                 METHOD==='Operating Cost Method'? INCOME_TAX_OPERATING :INCOME_TAX_WITHOUT_RENOVATION
             
-            console.log('incomeTaxWR',incomeTaxWR);
-            console.log('incomeTaxAR',incomeTaxAR);
+            
 
             const PreTax =  METHOD==='Without Renovation'? 0 :
                             METHOD==='Statutory Method'? PRE_TAX_STATUTORY :
@@ -331,10 +330,16 @@ const IncomTax = [
                             METHOD==='Statutory Method'? GST_POST_TAX_STATUTORY :
                             METHOD==='FBT Exempt Method'? GST_POST_TAX_EXEMPT :
                             METHOD==='Operating Cost Method'? GST_POST_TAX_OPERATING : 0
+
+            console.log('PreTax',PreTax);
+            console.log('PostTax',PostTax);
+            console.log('GSTPostTax',GSTPostTax);
             
             const TaxSavings = (incomeTaxWR - incomeTaxAR)
             const MonthlyTaxSavings = TaxSavings / 12
-
+            console.log('TaxSavings',TaxSavings);
+            console.log('MonthlyTaxSavings',MonthlyTaxSavings);
+            
             COST_PER_MONTH = PreTax + PostTax - MonthlyTaxSavings
             
             const preTaxPerWeek = PreTax / 52
