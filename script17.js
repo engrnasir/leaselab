@@ -388,6 +388,13 @@ async function  updateAllValues(){
     await calculateSaving()
     
     document.getElementById('savings').innerHTML = TOTAL_SAVING_MONTHLY?TOTAL_SAVING_MONTHLY.toFixed(2):0
+
+    if(leaseTerm.value<3){
+        document.getElementById('package-small-savings').innerText = TOTAL_SAVING_ANNUAL
+    }else{
+        document.getElementById('package-large-savings').innerText = TOTAL_SAVING_ANNUAL
+
+    }
   }
 
   function initialize(){
