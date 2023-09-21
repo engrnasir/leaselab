@@ -60,10 +60,6 @@ const IncomTax = [
   let GROSS_INCOME =   taxableSlider.value 
   const METHOD = 'Operating Cost Method'
 
-
-
-
-
         // Lease Payment (Ex GST Per Month) 	
         function calculateLeasePayment(){
 
@@ -174,6 +170,11 @@ const IncomTax = [
             POST_TAX_EXEMPT = 0
             GST_POST_TAX_EXEMPT = 0
 
+            console.log('LeasePayment',LeasePayment);
+            console.log('MonthlyRunningCost',MonthlyRunningCost);
+            console.log('PreTaxContribution',PreTaxContribution);
+            console.log('PRE_TAX_EXEMPT',PRE_TAX_EXEMPT);
+
             return PRE_TAX_EXEMPT
         }
         function calculateFBTStatutory(){
@@ -204,7 +205,6 @@ const IncomTax = [
 
             
             const  PreTaxContribution = FringeBenefitValueExGST - PostTaxEmployeeContributionMade
-            console.log('calculateFBTStatutory -> PreTaxContribution : ', PreTaxContribution);
             const  EmployeeFBTLiability = 0
 
             const  FBTTaxAmount = NonExemptGrossedupAmount * assumptions.FBTRate
@@ -212,7 +212,6 @@ const IncomTax = [
             PRE_TAX_STATUTORY = parseFloat(PreTaxContribution.toFixed(2))
             POST_TAX_STATUTORY = PostTaxEmployeeContributionMade
             GST_POST_TAX_STATUTORY = GSTIncludedInPostTaxContribution
-            console.log('calculateFBTStatutory -> PRE_TAX_STATUTORY : ', PRE_TAX_STATUTORY);
 
             return PRE_TAX_STATUTORY;
         }
@@ -243,8 +242,6 @@ const IncomTax = [
             PRE_TAX_OPERATING = parseFloat(PreTaxContribution.toFixed(2))
             POST_TAX_OPERATING = PostTaxEmployeeContributionMade
             GST_POST_TAX_OPERATING = GSTIncludedInPostTaxContribution
-
-            console.log('calculateFBTOperatingCost -> PRE_TAX_OPERATING : ', PRE_TAX_OPERATING);
 
             return PRE_TAX_OPERATING
 
@@ -333,15 +330,9 @@ const IncomTax = [
                             METHOD==='Statutory Method'? GST_POST_TAX_STATUTORY :
                             METHOD==='FBT Exempt Method'? GST_POST_TAX_EXEMPT :
                             METHOD==='Operating Cost Method'? GST_POST_TAX_OPERATING : 0
-
-            console.log('calculateSaving -> PRE_TAX_OPERATING',PRE_TAX_OPERATING);
-            console.log('POST_TAX_OPERATING',POST_TAX_OPERATING);
-            console.log('GST_POST_TAX_OPERATING',GST_POST_TAX_OPERATING);
             
             const TaxSavings = (incomeTaxWR - incomeTaxAR)
             const MonthlyTaxSavings = TaxSavings / 12
-            console.log('TaxSavings',TaxSavings);
-            console.log('MonthlyTaxSavings',MonthlyTaxSavings);
             
             COST_PER_MONTH = PreTax + PostTax - MonthlyTaxSavings
             
@@ -365,13 +356,13 @@ const IncomTax = [
             TOTAL_SAVING_ANNUAL = TOTAL_SAVING_OVERALL/LEASE_PERIOD*12
             TOTAL_SAVING_MONTHLY = TOTAL_SAVING_OVERALL/LEASE_PERIOD
 
-            console.log('COST_PER_MONTH',COST_PER_MONTH);
-            console.log('COST_PER_WEEK',COST_PER_WEEK);
-            console.log('OVERALL_GST_SAVING',OVERALL_GST_SAVING);
-            console.log('OVERALL_INCOME_TAX_SAVING',OVERALL_INCOME_TAX_SAVING);
-            console.log('TOTAL_SAVING_OVERALL',TOTAL_SAVING_OVERALL);
-            console.log('TOTAL_SAVING_ANNUAL',TOTAL_SAVING_ANNUAL);
-            console.log('TOTAL_SAVING_MONTHLY',TOTAL_SAVING_MONTHLY);
+            // console.log('COST_PER_MONTH',COST_PER_MONTH);
+            // console.log('COST_PER_WEEK',COST_PER_WEEK);
+            // console.log('OVERALL_GST_SAVING',OVERALL_GST_SAVING);
+            // console.log('OVERALL_INCOME_TAX_SAVING',OVERALL_INCOME_TAX_SAVING);
+            // console.log('TOTAL_SAVING_OVERALL',TOTAL_SAVING_OVERALL);
+            // console.log('TOTAL_SAVING_ANNUAL',TOTAL_SAVING_ANNUAL);
+            // console.log('TOTAL_SAVING_MONTHLY',TOTAL_SAVING_MONTHLY);
             
         }
         
@@ -379,7 +370,6 @@ const IncomTax = [
 
 async function  updateAllValues(){
     GROSS_INCOME =   parseFloat(taxableSlider.value)
-    console.log('GROSS_INCOME',GROSS_INCOME)
   	taxableSliderValue.innerHTML = taxableSlider.value
     annualKmsValue.innerHTML = annualKms.value
     leaseTermValue.innerHTML = leaseTerm.value
@@ -387,17 +377,14 @@ async function  updateAllValues(){
     
     await calculateLeasePayment()
     await calculateFBTExempt()
-    await calculateFBTStatutory()
-    await calculateFBTOperatingCost()
-    await calculateIncomeTax()
-    await calculateIncomeTax('statutory')
-    await calculateIncomeTax('exempt')
-    await calculateIncomeTax('operating')
+    // await calculateFBTStatutory()
+    // await calculateFBTOperatingCost()
+    // await calculateIncomeTax()
+    // await calculateIncomeTax('statutory')
+    // await calculateIncomeTax('exempt')
+    // await calculateIncomeTax('operating')
     
-    await calculateSaving()
-    
-    console.log('NET_VEHICLE_GST',NET_VEHICLE_GST)
-    console.log('TOTAL_SAVING_MONTHLY',TOTAL_SAVING_MONTHLY)
+    // await calculateSaving()
     
     document.getElementById('savings').innerHTML = TOTAL_SAVING_MONTHLY?TOTAL_SAVING_MONTHLY:0
   }
