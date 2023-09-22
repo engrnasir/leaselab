@@ -184,7 +184,7 @@ const IncomTax = [
        const url_arr = url.split('/')
        const len = url_arr.length;
        const model = url_arr[len-1]
-       console.log(model);
+        return model
     }
 
 function initializeCalculations(){
@@ -202,6 +202,8 @@ const driveAwayValue = document.getElementById('price-value')
 
     const model = getModel()
     const vehicle = vehicles.find(el => el.model === model)
+    console.log('model',model);
+    console.log('vehicle',vehicle);
     driveAway.value = vehicle.driveAwayPrice
     METHOD = vehicle.driveAwayPrice < 94000? 'FBT Exempt Method': vehicle.driveAwayPrice>94000? 'Operating Cost Method' : 'Statutory Method'
 
