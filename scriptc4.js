@@ -189,7 +189,7 @@ const IncomTax = [
 
 function initializeCalculations(){
 
-    console.log('calculations initialized', vehicles);
+console.log('calculations initialized');
 
 const taxableSlider = document.getElementById('taxable-slider')
 const annualKms = document.getElementById('kms-slider')
@@ -200,16 +200,13 @@ const annualKmsValue = document.getElementById('kms-value')
 const leaseTermValue = document.getElementById('term-value')
 const driveAwayValue = document.getElementById('price-value')
 const methodSwitch = document.getElementById('Checkbox-2')
-const businessSlider = document.getElementById('use-slider')
-const businessUseValue = document.getElementById('business-use-value')
 
     const model = getModel()
     const vehicle = vehicles.find(el => el.model === model)
     driveAway.value = vehicle.driveAwayPrice
     METHOD = vehicle.driveAwayPrice < 94000? 'FBT Exempt Method': vehicle.driveAwayPrice>94000? 'Operating Cost Method' : 'Statutory Method'
 
-    BUSINESS_USAGE = METHOD === 'Operating Cost Method' ? parseFloat(businessSlider.value)/100: 20/100;
-    businessUseValue.innerHTML = BUSINESS_USAGE*100 + ' %'
+  
 
     taxableSliderValue.innerHTML = taxableSlider.value
     annualKmsValue.innerHTML = annualKms.value
@@ -547,6 +544,12 @@ const businessUseValue = document.getElementById('business-use-value')
             METHOD = 'Operating Cost Method'
             document.getElementById('FBT_Slider').classList.remove('closed')
             document.getElementById('method-name').innerText = 'Operating Cost Method'
+
+            const businessSlider = document.getElementById('use-slider')
+            const businessUseValue = document.getElementById('business-use-value')
+            businessSlider.addEventListener('input', updateAllValues)
+            BUSINESS_USAGE = METHOD === 'Operating Cost Method' ? parseFloat(businessSlider.value)/100: 20/100;
+            businessUseValue.innerHTML = BUSINESS_USAGE*100 + ' %'
         }else{
             document.getElementById('FBT_Slider').classList.add('closed')
             METHOD = 'Statutory Method'
@@ -569,11 +572,6 @@ async function  updateAllValues(){
     KM_PER_YEAR = parseFloat(annualKms.value)
     
     updateMethod()
-
-    BUSINESS_USAGE = METHOD === 'Operating Cost Method' ? parseFloat(businessSlider.value)/100: 20/100;
-    businessUseValue.innerHTML = BUSINESS_USAGE*100 + ' %'
-  
-    console.log('businessSlider.value', businessSlider.value);
 
   	taxableSliderValue.innerHTML = `$${taxableSlider.value}/year`
     annualKmsValue.innerHTML = `${annualKms.value} km's`
@@ -615,7 +613,6 @@ async function  updateAllValues(){
     tyresInput.addEventListener('input', updateAllValues)
     roadsideInput.addEventListener('input', updateAllValues)
     otherInput.addEventListener('input', updateAllValues)
-    businessSlider.addEventListener('input', updateAllValues)
 
 
     updateAllValues()
