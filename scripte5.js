@@ -644,7 +644,7 @@ async function  updateAllValues(){
     }
 
     function gotoForm(){
-        const URL = `/form?firstName=${"oskar"}&lastName=${"rutten"}&phone={"477440329"}&email=${"rutten.oskar@gmail.com"}&employer=${''}&car=${SELECTED_VEHICLE}&businessUse=${BUSINESS_USAGE}&term=${LEASE_PERIOD/12}&income=${OVERALL_INCOME_TAX_SAVING}&carPrice=${''}&fbtMethod=${METHOD}&electricty=${ELECTRICITY_FEE}&service=${MAINTENANCE_FEE}&insurance=${INSURANCE_FEE}&regisration=${REGISTRATION_FEE}&tyres=${TYRES_FEE}&roadside=${ROADSIDE_FEE}&incidentalother=${OTHERS_FEE}&carColour=${''}&quoteCPM=${''}&savingsPm=${OVERALL_INCOME_TAX_SAVING}`
+        const URL = `/form?firstName=${"oskar"}&lastName=${"rutten"}&phone=${"477440329"}&email=${"rutten.oskar@gmail.com"}&employer=${''}&car=${SELECTED_VEHICLE}&businessUse=${BUSINESS_USAGE}&term=${LEASE_PERIOD/12}&income=${OVERALL_INCOME_TAX_SAVING}&carPrice=${''}&fbtMethod=${METHOD}&electricty=${ELECTRICITY_FEE}&service=${MAINTENANCE_FEE}&insurance=${INSURANCE_FEE}&regisration=${REGISTRATION_FEE}&tyres=${TYRES_FEE}&roadside=${ROADSIDE_FEE}&incidentalother=${OTHERS_FEE}&carColour=${''}&quoteCPM=${''}&savingsPm=${OVERALL_INCOME_TAX_SAVING}`
         location.href = URL
     }
 }
