@@ -542,21 +542,19 @@ const methodSwitch = document.getElementById('Checkbox-2')
             METHOD = 'Operating Cost Method'
             document.getElementById('FBT_Slider').classList.remove('closed')
             document.getElementById('method-name').innerText = 'Operating Cost Method'
-            methodSwitch.checked = true
         }else{
             document.getElementById('FBT_Slider').classList.add('closed')
             METHOD = 'Statutory Method'
             document.getElementById('method-name').innerText = 'Statutory Method'
         }
 
-        if(methodSwitch.checked){
-            METHOD = 'Operating Cost Method'
-            document.getElementById('FBT_Slider').classList.remove('closed')
-            document.getElementById('method-name').innerText = 'Operating Cost Method'
-            methodSwitch.classList.add('Checked')
-        }else{
-           methodSwitch.classList.remove('Checked')
-       }
+    //     if(methodSwitch.checked){
+    //         METHOD = 'Operating Cost Method'
+    //         document.getElementById('FBT_Slider').classList.remove('closed')
+    //         document.getElementById('method-name').innerText = 'Operating Cost Method'
+    //     }else{
+    //        methodSwitch.classList.remove('Checked')
+    //    }
 
         console.log('METHOD', METHOD);
     }
