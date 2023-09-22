@@ -532,7 +532,6 @@ const methodSwitch = document.getElementById('switch')
     }
         
     function updateMethod(){
-        console.log('methodSwitch',methodSwitch.value);
         if(driveAway.value < 94000){
             METHOD = 'FBT Exempt Method'
             document.getElementById('FBT_Slider').classList.add('closed')
@@ -542,14 +541,14 @@ const methodSwitch = document.getElementById('switch')
             METHOD = 'Operating Cost Method'
             document.getElementById('FBT_Slider').classList.remove('closed')
             document.getElementById('method-name').innerText = 'Operating Cost Method'
-            methodSwitch.value = 'on'
+            methodSwitch.checked = true
         }else{
             document.getElementById('FBT_Slider').classList.add('closed')
             METHOD = 'Statutory Method'
             document.getElementById('method-name').innerText = 'Statutory Method'
         }
 
-        if(methodSwitch.value === 'on'){
+        if(methodSwitch.checked === true){
             METHOD = 'Operating Cost Method'
             document.getElementById('FBT_Slider').classList.remove('closed')
             document.getElementById('method-name').innerText = 'Operating Cost Method'
