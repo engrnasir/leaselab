@@ -178,8 +178,18 @@ const IncomTax = [
   let BUSINESS_USAGE = 20 // 20%
   let METHOD = 'Operating Cost Method'
 
-   // CUSTOM VARIABLES
-  
+   // MONTHLY RUNNING COSTS VARIABLES
+    let ELECTRICITY_FEE = 0
+    let MAINTENANCE_FEE = 0
+    let INSURANCE_FEE = 0
+    let REGISTRATION_FEE = 0
+    let TYRES_FEE = 0
+    let ROADSIDE_FEE = 0
+    let OTHERS_FEE = 0
+    let LEASE_MANAGEMENT_FEE = 0
+
+    let SELECTED_VEHICLE = ""
+
    function getModel(){
        const url = window.location.href
        const url_arr = url.split('/')
@@ -204,6 +214,7 @@ const driveAwayValue = document.getElementById('price-value')
 
     const model = getModel()
     const vehicle = vehicles.find(el => el.model === model)
+    SELECTED_VEHICLE = vehicle.make + " " + vehicle.modelName
     driveAway.value = vehicle.driveAwayPrice
     METHOD = vehicle.driveAwayPrice < 94000? 'FBT Exempt Method': vehicle.driveAwayPrice>94000? 'Operating Cost Method' : 'Statutory Method'
 
@@ -313,23 +324,23 @@ const driveAwayValue = document.getElementById('price-value')
                 return -(numerator / denominator);
             }
         function calculateMonthlyRunningCost (){
-            const electricityVal = parseFloat(electricityInput.value?electricityInput.value: 85.90)
-            const maintenanceVal = parseFloat(maintenanceInput.value?maintenanceInput.value:  48.75)
-            const insuranceVal = parseFloat(insuranceInput.value?insuranceInput.value: 148.64)
-            const registrationVal = parseFloat(registrationInput.value?registrationInput.value:  57.60)
-            const tyresVal = parseFloat(tyresInput.value?tyresInput.value: 32.40)
-            const roadsideVal = parseFloat(roadsideInput.value?roadsideInput.value:  29.44)
-            const otherVal = parseFloat(otherInput.value?otherInput.value:  6.15)
-            const leaseManagement = 39
+            ELECTRICITY_FEE = parseFloat(electricityInput.value?electricityInput.value: 85.90)
+            MAINTENANCE_FEE = parseFloat(maintenanceInput.value?maintenanceInput.value:  48.75)
+            INSURANCE_FEE  = parseFloat(insuranceInput.value?insuranceInput.value: 148.64)
+            REGISTRATION_FEE = parseFloat(registrationInput.value?registrationInput.value:  57.60)
+            TYRES_FEE = parseFloat(tyresInput.value?tyresInput.value: 32.40)
+            ROADSIDE_FEE = parseFloat(roadsideInput.value?roadsideInput.value:  29.44)
+            OTHERS_FEE = parseFloat(otherInput.value?otherInput.value:  6.15)
+            LEASE_MANAGEMENT_FEE = 39
 
-            electricityInput.value = electricityVal
-            maintenanceInput.value = maintenanceVal
+            electricityInput.value = ELECTRICITY_FEE
+            maintenanceInput.value = MAINTENANCE_FEE
             insuranceInput.value = insuranceVal
-            registrationInput.value = registrationVal
-            tyresInput.value = tyresVal
-            roadsideInput.value = roadsideVal
-            otherInput.value = otherVal
-            
+            registrationInput.value = INSURANCE_FEE
+            tyresInput.value = TYRES_FEE
+            roadsideInput.value = ROADSIDE_FEE
+            otherInput.value = OTHERS_FEE
+                
             MONTHLY_RUNNING_COST = electricityVal + maintenanceVal + insuranceVal + registrationVal + tyresVal + roadsideVal + otherVal + leaseManagement
             return MONTHLY_RUNNING_COST
         }
