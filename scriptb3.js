@@ -199,7 +199,7 @@ const taxableSliderValue = document.getElementById('taxable-value')
 const annualKmsValue = document.getElementById('kms-value')
 const leaseTermValue = document.getElementById('term-value')
 const driveAwayValue = document.getElementById('price-value')
-const methodSwitch = document.getElementById('switch')
+const methodSwitch = document.getElementById('Checkbox-2')
 
     const model = getModel()
     const vehicle = vehicles.find(el => el.model === model)
