@@ -617,7 +617,7 @@ const vehicles = [
    
     
 ]
-const assumptions={};
+let assumptions={};
 
 const IncomTax = [
     {  "start": 0,  "end": 18200.99, "Rate":0, "PaidinBrac": 0, "TotalPaid": 0 },
