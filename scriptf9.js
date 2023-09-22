@@ -1120,12 +1120,13 @@ async function  updateAllValues(costItem){
     
     document.getElementById('monthlyBudgetVal').innerHTML = numberWithCommas(parseFloat(MONTHLY_RUNNING_COST.toFixed(0)) ) 
     document.getElementById('savings').innerHTML =  numberWithCommas(parseFloat(TOTAL_SAVING_MONTHLY?TOTAL_SAVING_MONTHLY.toFixed(0):0))
-
-    if(leaseTerm.value<3){
+    
+    if(leaseTerm.value==1){
         document.getElementById('package-small-savings').innerText =`Up to $${numberWithCommas(parseFloat(TOTAL_SAVING_ANNUAL.toFixed(0)))} Saved`
-    }else{
+    }else if(leaseTerm.value==5){
         document.getElementById('package-large-savings').innerText = `Up to $${numberWithCommas(parseFloat(TOTAL_SAVING_ANNUAL.toFixed(0)))} Saved`
-
+    }else{
+        document.getElementById('package-medium-savings').innerText = `Up to $${numberWithCommas(parseFloat(TOTAL_SAVING_ANNUAL.toFixed(0)))} Saved`
     }
   }
 
