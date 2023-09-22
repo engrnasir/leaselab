@@ -545,8 +545,7 @@ const methodSwitch = document.getElementById('Checkbox-2')
             document.getElementById('FBT_Slider').classList.remove('closed')
             document.getElementById('method-name').innerText = 'Operating Cost Method'
 
-            const businessSliderWrap = document.getElementById('use-slider')
-            const businessSlider = businessSliderWrap.getElementById('use-slider')
+            const businessSlider = document.getElementById('business-slider')
             const businessUseValue = document.getElementById('business-use-value')
             console.log(businessSlider);
             businessSlider.addEventListener('input', updateAllValues)
