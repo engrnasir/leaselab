@@ -200,7 +200,7 @@ const taxableSliderValue = document.getElementById('taxable-value')
 const annualKmsValue = document.getElementById('kms-value')
 const leaseTermValue = document.getElementById('term-value')
 const driveAwayValue = document.getElementById('price-value')
-const methodSwitch = document.getElementById('Checkbox-2')
+// const methodSwitch = document.getElementById('Checkbox-2')
 
     const model = getModel()
     const vehicle = vehicles.find(el => el.model === model)
@@ -605,7 +605,7 @@ async function  updateAllValues(){
     taxableSlider.addEventListener('input', updateAllValues)
     annualKms.addEventListener('input', updateAllValues)
     driveAway.addEventListener('input', updateAllValues)
-    methodSwitch.addEventListener('input', updateAllValues)
+    // methodSwitch.addEventListener('input', updateAllValues)
 
     electricityInput.addEventListener('input', updateAllValues)
     maintenanceInput.addEventListener('input', updateAllValues)
