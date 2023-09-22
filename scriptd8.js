@@ -335,13 +335,14 @@ const driveAwayValue = document.getElementById('price-value')
 
             electricityInput.value = ELECTRICITY_FEE
             maintenanceInput.value = MAINTENANCE_FEE
-            insuranceInput.value = insuranceVal
-            registrationInput.value = INSURANCE_FEE
+            insuranceInput.value = INSURANCE_FEE
+            registrationInput.value = REGISTRATION_FEE
             tyresInput.value = TYRES_FEE
             roadsideInput.value = ROADSIDE_FEE
             otherInput.value = OTHERS_FEE
                 
-            MONTHLY_RUNNING_COST = electricityVal + maintenanceVal + insuranceVal + registrationVal + tyresVal + roadsideVal + otherVal + leaseManagement
+            MONTHLY_RUNNING_COST = ELECTRICITY_FEE + MAINTENANCE_FEE + INSURANCE_FEE + REGISTRATION_FEE + TYRES_FEE +  ROADSIDE_FEE + OTHERS_FEE + LEASE_MANAGEMENT_FEE
+            
             return MONTHLY_RUNNING_COST
         }
 
