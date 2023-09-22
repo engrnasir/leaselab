@@ -287,10 +287,10 @@ const driveAwayValue = document.getElementById('price-value')
 
             const packages = document.querySelectorAll('.package')
             packages.forEach(el => el.classList.remove('active'))
-            if(leaseTerm.value===1){
+            if(leaseTerm.value==1){
                 packages[0].classList.add('active')
                 document.getElementById('package-small-price').innerHTML = `$${LEASE_PAYMERNT_PER_MONTH.toFixed(0)}pm`
-            }else if(leaseTerm.value===5){
+            }else if(leaseTerm.value==5){
                 packages[2].classList.add('active')
                 document.getElementById('package-large-price').innerHTML = `$${LEASE_PAYMERNT_PER_MONTH.toFixed(0)}pm`
             }else{
