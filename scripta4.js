@@ -53,7 +53,7 @@ const IncomTax = [
 
 function initializeCalculations(){
 
-    console.log('calculations initialized');
+    console.log('calculations initialized', vehicles);
 
 const taxableSlider = document.getElementById('taxable-slider')
 const annualKms = document.getElementById('kms-slider')
