@@ -295,7 +295,7 @@ const driveAwayValue = document.getElementById('price-value')
                 document.getElementById('package-large-price').innerHTML = `$${LEASE_PAYMERNT_PER_MONTH.toFixed(0)}pm`
             }else{
                 packages[1].classList.add('active')
-                document.getElementById('package-medium-years').innerHTML = `${leaseTerm.value}Yr.`
+                document.getElementById('package-medium-years').innerHTML = `${leaseTerm.value} Yr.`
                 document.getElementById('package-medium-price').innerHTML = `$${LEASE_PAYMERNT_PER_MONTH.toFixed(0)}pm`
             }
 
