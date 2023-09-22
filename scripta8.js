@@ -535,13 +535,18 @@ const driveAwayValue = document.getElementById('price-value')
         if(driveAway.value < 94000){
             METHOD = 'FBT Exempt Method'
             document.getElementById('FBT_Slider').classList.add('closed')
+            document.getElementById('method-name').innerText = 'Exempt Method'
             
         }else if(driveAway.value > 94000){
             METHOD = 'Operating Cost Method'
             document.getElementById('FBT_Slider').classList.remove('closed')
+            document.getElementById('method-name').innerText = 'Operating Cost Method'
+
         }else{
             document.getElementById('FBT_Slider').classList.add('closed')
             METHOD = 'Statutory Method'
+            document.getElementById('method-name').innerText = 'Statutory Method'
+
         }
 
         console.log('METHOD', METHOD);
