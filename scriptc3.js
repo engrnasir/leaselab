@@ -573,6 +573,7 @@ async function  updateAllValues(){
     BUSINESS_USAGE = METHOD === 'Operating Cost Method' ? parseFloat(businessSlider.value)/100: 20/100;
     businessUseValue.innerHTML = BUSINESS_USAGE*100 + ' %'
   
+    console.log('businessSlider.value', businessSlider.value);
 
   	taxableSliderValue.innerHTML = `$${taxableSlider.value}/year`
     annualKmsValue.innerHTML = `${annualKms.value} km's`
