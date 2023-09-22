@@ -604,13 +604,13 @@ async function  updateAllValues(){
     
     await calculateSaving()
     
-    document.getElementById('monthlyBudgetVal').innerHTML = MONTHLY_RUNNING_COST.toFixed(0)
-    document.getElementById('savings').innerHTML = TOTAL_SAVING_MONTHLY?TOTAL_SAVING_MONTHLY.toFixed(0):0
+    document.getElementById('monthlyBudgetVal').innerHTML = numberWithCommas(parseFloat(MONTHLY_RUNNING_COST.toFixed(0)) ) 
+    document.getElementById('savings').innerHTML =  numberWithCommas(parseFloat(TOTAL_SAVING_MONTHLY?TOTAL_SAVING_MONTHLY.toFixed(0):0))
 
     if(leaseTerm.value<3){
-        document.getElementById('package-small-savings').innerText =`Up to $${TOTAL_SAVING_ANNUAL.toFixed(0)} Saved`
+        document.getElementById('package-small-savings').innerText =`Up to $${numberWithCommas(parseFloat(TOTAL_SAVING_ANNUAL.toFixed(0)))} Saved`
     }else{
-        document.getElementById('package-large-savings').innerText = `Up to $${TOTAL_SAVING_ANNUAL.toFixed(0)} Saved`
+        document.getElementById('package-large-savings').innerText = `Up to $${numberWithCommas(parseFloat(TOTAL_SAVING_ANNUAL.toFixed(0)))} Saved`
 
     }
   }
