@@ -1,3 +1,14 @@
+import vehicles from './vehicles'
+
+const assumptions={financeRate:.0875,commissionRate:.08,regoCost:850,dividingFactor:1.042,stampDutyDenominator:200,stampDutyMultiplier:8.4,luxuryCarTaxThreshold:89332,luxuryCarTax:0,FinancingFees:336,documentFees:900,ClaimableGSTCarValueLimit:68108,ResidualValueRate:.2813,PostTaxDeduction:0,StatutoryMethodRate:.2,DaysInFBTDays:366,MinimumThresholdforFBT:2e3,FBTGrossedUpMultiplier:2.0802,FBTRate:.47,LVA:0,ElectricityCostCentsPerkWH:.3524,ElectricityDefaultValue:.195,MedicareSurcharge:"Not Included",MaintenanceMultiplier:3,MaintenanceFee:.013,EmployerFBTType:"Standard",WhoPaysFBT:"Employee - ECM"};
+
+const IncomTax = [
+    {  "start": 0,  "end": 18200.99, "Rate":0, "PaidinBrac": 0, "TotalPaid": 0 },
+    { "start": 18201.00, "end": 45000.99, "Rate":0.19, "PaidinBrac": 5092.00, "TotalPaid": 5092.00, },
+    { "start": 45001.00, "end": 120000.99, "Rate": 0.33, "PaidinBrac": 24375.00, "TotalPaid": 29467.00, },
+    { "start": 120001.00, "end": 180000.99,"Rate": 0.37,"PaidinBrac": 22200.00,"TotalPaid": 51667.00, },
+    { "start": 180001.00, "end": NaN,"Rate":0.45,"PaidinBrac": NaN,"TotalPaid": NaN, }
+  ]
 
   let NET_VEHICLE_GST = 0;
   let LEASE_PAYMERNT_PER_MONTH = 0
@@ -25,7 +36,23 @@
   let TOTAL_SAVING_ANNUAL = 0
   let TOTAL_SAVING_MONTHLY = 0
 
+  let GROSS_INCOME =   0;    //Taxable values
+  let KM_PER_YEAR = 0
+  let BUSINESS_USAGE = 1 // 100%
+  let METHOD = 'Operating Cost Method'
+
+   // CUSTOM VARIABLES
+  
+   function getModel(){
+       const url = window.location.href
+       const url_arr = url.split('/')
+       const len = url_arr.length;
+       const model = url_arr[len-1]
+       console.log(model);
+    }
+
 function initializeCalculations(){
+
     console.log('calculations initialized');
 
 const taxableSlider = document.getElementById('taxable-slider')
@@ -37,18 +64,18 @@ const annualKmsValue = document.getElementById('kms-value')
 const leaseTermValue = document.getElementById('term-value')
 const driveAwayValue = document.getElementById('price-value')
 
-taxableSliderValue.innerHTML = taxableSlider.value
-  annualKmsValue.innerHTML = annualKms.value
-  leaseTermValue.innerHTML = leaseTerm.value
-  driveAwayValue.innerHTML = driveAway.value
-const assumptions={financeRate:.0875,commissionRate:.08,regoCost:850,dividingFactor:1.042,stampDutyDenominator:200,stampDutyMultiplier:8.4,luxuryCarTaxThreshold:89332,luxuryCarTax:0,FinancingFees:336,documentFees:900,ClaimableGSTCarValueLimit:68108,ResidualValueRate:.2813,PostTaxDeduction:0,StatutoryMethodRate:.2,DaysInFBTDays:366,MinimumThresholdforFBT:2e3,FBTGrossedUpMultiplier:2.0802,FBTRate:.47,LVA:0,ElectricityCostCentsPerkWH:.3524,ElectricityDefaultValue:.195,MedicareSurcharge:"Not Included",MaintenanceMultiplier:3,MaintenanceFee:.013,EmployerFBTType:"Standard",WhoPaysFBT:"Employee - ECM"};
-const IncomTax = [
-  {  "start": 0,  "end": 18200.99, "Rate":0, "PaidinBrac": 0, "TotalPaid": 0 },
-  { "start": 18201.00, "end": 45000.99, "Rate":0.19, "PaidinBrac": 5092.00, "TotalPaid": 5092.00, },
-  { "start": 45001.00, "end": 120000.99, "Rate": 0.33, "PaidinBrac": 24375.00, "TotalPaid": 29467.00, },
-  { "start": 120001.00, "end": 180000.99,"Rate": 0.37,"PaidinBrac": 22200.00,"TotalPaid": 51667.00, },
-  { "start": 180001.00, "end": NaN,"Rate":0.45,"PaidinBrac": NaN,"TotalPaid": NaN, }
-]
+    const model = getModel()
+    const vehicle = vehicles.find(el => el.model === model)
+    driveAway.value = vehicle.driveAwayPrice
+    METHOD = vehicle.driveAwayPrice < 94000? 'FBT Exempt Method': vehicle.driveAwayPrice>94000? 'Operating Cost Method' : 'Statutory Method'
+
+    taxableSliderValue.innerHTML = taxableSlider.value
+    annualKmsValue.innerHTML = annualKms.value
+    leaseTermValue.innerHTML = leaseTerm.value
+    driveAwayValue.innerHTML = driveAway.value
+
+
+
         
   let electricityInput = document.getElementById('electricity-value')
   let maintenanceInput = document.getElementById('maintenance-value')
@@ -58,10 +85,7 @@ const IncomTax = [
   let roadsideInput = document.getElementById('roadside-value')
   let otherInput = document.getElementById('other-value')
 
-  // CUSTOM VARIABLES
-  const BUSINESS_USAGE = 1 // 100%
-  let GROSS_INCOME =   taxableSlider.value 
-  const METHOD = 'Operating Cost Method'
+ 
 
         // Lease Payment (Ex GST Per Month) 	
         function calculateLeasePayment(){
@@ -373,7 +397,11 @@ const IncomTax = [
 
 
 async function  updateAllValues(){
-    GROSS_INCOME =   parseFloat(taxableSlider.value)
+    GROSS_INCOME = parseFloat(taxableSlider.value)
+    KM_PER_YEAR = parseFloat(annualKms.value)
+    METHOD = driveAway.value < 94000? 'FBT Exempt Method':  driveAway.value>94000? 'Operating Cost Method' : 'Statutory Method'
+
+
   	taxableSliderValue.innerHTML = `$${taxableSlider.value}/year`
     annualKmsValue.innerHTML = `${annualKms.value} km's`
     leaseTermValue.innerHTML = `${leaseTerm.value} Years`
