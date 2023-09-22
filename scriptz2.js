@@ -1154,7 +1154,7 @@ async function  updateAllValues(costItem){
     document.getElementById('get-quote-button').addEventListener('click', gotoForm)
 
     document.getElementById('package-small').addEventListener('click',()=>{ leaseTerm.value = 1; updateAllValues(false)})
-    document.getElementById('package-medium').addEventListener('click',()=>{ leaseTerm.value = 3; updateAllValues(false)})
+    // document.getElementById('package-medium').addEventListener('click',()=>{ leaseTerm.value = 3; updateAllValues(false)})
     document.getElementById('package-large').addEventListener('click',()=>{ leaseTerm.value = 5; updateAllValues(false)})
 
 
