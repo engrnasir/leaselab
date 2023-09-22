@@ -1104,7 +1104,10 @@ async function  updateAllValues(costItem){
 
     await calculateBudgets()
 
-    costItem?'': updateOperatingCostItems()
+    if(!costItem){
+        console.log(costItem);
+        updateOperatingCostItems()
+    }
 
     await updateMethod()
 
