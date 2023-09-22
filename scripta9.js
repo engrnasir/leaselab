@@ -199,6 +199,7 @@ const taxableSliderValue = document.getElementById('taxable-value')
 const annualKmsValue = document.getElementById('kms-value')
 const leaseTermValue = document.getElementById('term-value')
 const driveAwayValue = document.getElementById('price-value')
+const methodSwitch = document.getElementById('switch')
 
     const model = getModel()
     const vehicle = vehicles.find(el => el.model === model)
@@ -541,13 +542,18 @@ const driveAwayValue = document.getElementById('price-value')
             METHOD = 'Operating Cost Method'
             document.getElementById('FBT_Slider').classList.remove('closed')
             document.getElementById('method-name').innerText = 'Operating Cost Method'
-
+            document.getElementById('switch').value = true
         }else{
             document.getElementById('FBT_Slider').classList.add('closed')
             METHOD = 'Statutory Method'
             document.getElementById('method-name').innerText = 'Statutory Method'
-
         }
+
+        if(methodSwitch.value === true){
+            METHOD = 'Operating Cost Method'
+            document.getElementById('FBT_Slider').classList.remove('closed')
+            document.getElementById('method-name').innerText = 'Operating Cost Method'
+       }
 
         console.log('METHOD', METHOD);
     }
@@ -555,7 +561,10 @@ const driveAwayValue = document.getElementById('price-value')
 async function  updateAllValues(){
     GROSS_INCOME = parseFloat(taxableSlider.value)
     KM_PER_YEAR = parseFloat(annualKms.value)
+    
     updateMethod()
+
+  
 
   	taxableSliderValue.innerHTML = `$${taxableSlider.value}/year`
     annualKmsValue.innerHTML = `${annualKms.value} km's`
@@ -588,6 +597,7 @@ async function  updateAllValues(){
     taxableSlider.addEventListener('input', updateAllValues)
     annualKms.addEventListener('input', updateAllValues)
     driveAway.addEventListener('input', updateAllValues)
+    methodSwitch.addEventListener('input', updateAllValues)
 
     electricityInput.addEventListener('input', updateAllValues)
     maintenanceInput.addEventListener('input', updateAllValues)
