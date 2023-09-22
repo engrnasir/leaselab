@@ -1095,7 +1095,7 @@ const driveAwayValue = document.getElementById('price-value')
         console.log('METHOD', METHOD);
     }
 
-async function  updateAllValues(){
+async function  updateAllValues(costItem=false){
     GROSS_INCOME = parseFloat(taxableSlider.value)
     KM_PER_YEAR = parseFloat(annualKms.value)
     DRIVE_AWAY_PRICE = parseFloat(driveAway.value)
@@ -1104,7 +1104,7 @@ async function  updateAllValues(){
 
     await calculateBudgets()
 
-    await updateOperatingCostItems()
+    costItem?'': await updateOperatingCostItems()
 
     await updateMethod()
 
@@ -1149,13 +1149,13 @@ async function  updateAllValues(){
     driveAway.addEventListener('input', updateAllValues)
     // methodSwitch.addEventListener('input', updateAllValues)
 
-    electricityInput.addEventListener('input', updateAllValues)
-    maintenanceInput.addEventListener('input', updateAllValues)
-    insuranceInput.addEventListener('input', updateAllValues)
-    registrationInput.addEventListener('input', updateAllValues)
-    tyresInput.addEventListener('input', updateAllValues)
-    roadsideInput.addEventListener('input', updateAllValues)
-    otherInput.addEventListener('input', updateAllValues)
+    electricityInput.addEventListener('input',()=> updateAllValues(true))
+    maintenanceInput.addEventListener('input', ()=> updateAllValues(true))
+    insuranceInput.addEventListener('input', ()=> updateAllValues(true))
+    registrationInput.addEventListener('input', ()=> updateAllValues(true))
+    tyresInput.addEventListener('input', ()=> updateAllValues(true))
+    roadsideInput.addEventListener('input', ()=> updateAllValues(true))
+    otherInput.addEventListener('input', ()=> updateAllValues(true))
 
     document.getElementById('get-quote-button').addEventListener('click', gotoForm)
 
