@@ -547,6 +547,7 @@ const methodSwitch = document.getElementById('Checkbox-2')
 
             const businessSlider = document.getElementById('use-slider')
             const businessUseValue = document.getElementById('business-use-value')
+            console.log(businessSlider);
             businessSlider.addEventListener('input', updateAllValues)
             BUSINESS_USAGE = METHOD === 'Operating Cost Method' ? parseFloat(businessSlider.value)/100: 20/100;
             businessUseValue.innerHTML = BUSINESS_USAGE*100 + ' %'
