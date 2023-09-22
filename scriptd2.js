@@ -174,6 +174,7 @@ const IncomTax = [
 
   let GROSS_INCOME =   0;    //Taxable values
   let KM_PER_YEAR = 0
+  let MONTHLY_RUNNING_COST = 0
   let BUSINESS_USAGE = 20 // 20%
   let METHOD = 'Operating Cost Method'
 
@@ -216,13 +217,13 @@ const methodSwitch = document.getElementById('Checkbox-2')
 
 
         
-  let electricityInput = document.getElementById('electricity-value')
-  let maintenanceInput = document.getElementById('maintenance-value')
-  let insuranceInput = document.getElementById('insurance-value')
-  let registrationInput = document.getElementById('registration-value')
-  let tyresInput = document.getElementById('tyres-value')
-  let roadsideInput = document.getElementById('roadside-value')
-  let otherInput = document.getElementById('other-value')
+  const electricityInput = document.getElementById('electricity-value')
+  const maintenanceInput = document.getElementById('maintenance-value')
+  const insuranceInput = document.getElementById('insurance-value')
+  const registrationInput = document.getElementById('registration-value')
+  const tyresInput = document.getElementById('tyres-value')
+  const roadsideInput = document.getElementById('roadside-value')
+  const otherInput = document.getElementById('other-value')
 
  
 
@@ -328,17 +329,17 @@ const methodSwitch = document.getElementById('Checkbox-2')
             roadsideInput.value = roadsideVal
             otherInput.value = otherVal
             
-            return electricityVal + maintenanceVal + insuranceVal + registrationVal + tyresVal + roadsideVal + otherVal + leaseManagement
+            MONTHLY_RUNNING_COST = electricityVal + maintenanceVal + insuranceVal + registrationVal + tyresVal + roadsideVal + otherVal + leaseManagement
+            return MONTHLY_RUNNING_COST
         }
 
 
 //////////////////////////// Pre Tax Calculation Start 
         function calculateFBTExempt(){
             const LeasePayment = calculateLeasePayment();
-            const MonthlyRunningCost = calculateMonthlyRunningCost()
             const  AnnualMonths = 12
 
-            const PreTaxContribution = (parseFloat(LeasePayment) + MonthlyRunningCost) * AnnualMonths
+            const PreTaxContribution = (parseFloat(LeasePayment) + MONTHLY_RUNNING_COST) * AnnualMonths
 
             PRE_TAX_EXEMPT = parseFloat(PreTaxContribution.toFixed(2))
             POST_TAX_EXEMPT = 0
@@ -348,7 +349,6 @@ const methodSwitch = document.getElementById('Checkbox-2')
         }
         function calculateFBTStatutory(){
             const LeasePayment = calculateLeasePayment();
-            const MonthlyRunningCost = calculateMonthlyRunningCost()
             const  AnnualMonths = 12
 
             const VehicleBaseValue = NET_VEHICLE_GST;
@@ -368,7 +368,7 @@ const methodSwitch = document.getElementById('Checkbox-2')
             const  ExemptGrossedupAmount = FullGrossedUpTaxableAmount - NonExemptGrossedupAmount
             const PostTaxEmployeeContributionMade = GrossTaxableValue
             const  GSTIncludedInPostTaxContribution = parseFloat((PostTaxEmployeeContributionMade/11).toFixed(2))
-            const FringeBenefitValueExGST =  GSTIncludedInPostTaxContribution + (LeasePayment + MonthlyRunningCost) * 12;
+            const FringeBenefitValueExGST =  GSTIncludedInPostTaxContribution + (LeasePayment + MONTHLY_RUNNING_COST) * 12;
 
             
             const  PreTaxContribution = FringeBenefitValueExGST - PostTaxEmployeeContributionMade
@@ -384,11 +384,10 @@ const methodSwitch = document.getElementById('Checkbox-2')
         }
         function calculateFBTOperatingCost(){
             const LeasePayment = calculateLeasePayment();
-            const MonthlyRunningCost = calculateMonthlyRunningCost()
             const  AnnualMonths = 12
 
 
-            const TotalLeaseOperatingCostsIncGST = ((LeasePayment*1.1)+(MonthlyRunningCost*1.1))*12
+            const TotalLeaseOperatingCostsIncGST = ((LeasePayment*1.1)+(MONTHLY_RUNNING_COST*1.1))*12
             const BusinessUsage = BUSINESS_USAGE
             const GrossTaxableValue =(TotalLeaseOperatingCostsIncGST*(1-BusinessUsage))
             const FullGrossedUpTaxableAmount = (GrossTaxableValue*assumptions.FBTGrossedUpMultiplier) 
@@ -398,7 +397,7 @@ const methodSwitch = document.getElementById('Checkbox-2')
             
             const PostTaxEmployeeContributionMade = GrossTaxableValue 
             const GSTIncludedInPostTaxContribution = (PostTaxEmployeeContributionMade/11) 
-            const FringeBenefitValueExGST = ((LeasePayment+MonthlyRunningCost)*12)+GSTIncludedInPostTaxContribution 
+            const FringeBenefitValueExGST = ((LeasePayment+MONTHLY_RUNNING_COST)*12)+GSTIncludedInPostTaxContribution 
 
             const  PreTaxContribution = FringeBenefitValueExGST - PostTaxEmployeeContributionMade
 
@@ -510,8 +509,7 @@ const methodSwitch = document.getElementById('Checkbox-2')
         COST_PER_WEEK = preTaxPerWeek + postTaxPerWeek - WeeklyTaxSavings
 
         const LeasePayment = calculateLeasePayment();               
-        const MonthlyRunningCost = calculateMonthlyRunningCost()  
-        const LeaseRunnngCostMonthly =  LeasePayment+ MonthlyRunningCost //z20
+        const LeaseRunnngCostMonthly =  LeasePayment+ MONTHLY_RUNNING_COST //z20
         const GSTSavingsMonthly = LeaseRunnngCostMonthly*0.1 //z21
         const GSTPostTaxDeductionMonthly = GSTPostTax/12 //z22
 
@@ -579,6 +577,7 @@ async function  updateAllValues(){
     leaseTermValue.innerHTML = `${leaseTerm.value} Years`
     driveAwayValue.innerHTML = `$${driveAway.value}`
     
+    await calculateMonthlyRunningCost()
     await calculateLeasePayment()
     await calculateFBTExempt()
     await calculateFBTStatutory()
@@ -590,7 +589,7 @@ async function  updateAllValues(){
     
     await calculateSaving()
     
-    document.getElementById('monthlyBudgetVal').innerHTML = COST_PER_MONTH.toFixed(0)
+    document.getElementById('monthlyBudgetVal').innerHTML = MONTHLY_RUNNING_COST.toFixed(0)
     document.getElementById('savings').innerHTML = TOTAL_SAVING_MONTHLY?TOTAL_SAVING_MONTHLY.toFixed(0):0
 
     if(leaseTerm.value<3){
@@ -615,6 +614,8 @@ async function  updateAllValues(){
     tyresInput.addEventListener('input', updateAllValues)
     roadsideInput.addEventListener('input', updateAllValues)
     otherInput.addEventListener('input', updateAllValues)
+
+    console.log(electricityInput);
 
 
     updateAllValues()
