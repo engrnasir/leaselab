@@ -630,6 +630,8 @@ async function  updateAllValues(){
     roadsideInput.addEventListener('input', updateAllValues)
     otherInput.addEventListener('input', updateAllValues)
 
+    document.getElementById('get-quote-button').addEventListener('click', gotoForm)
+
     console.log(electricityInput);
 
 
@@ -639,5 +641,10 @@ async function  updateAllValues(){
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+    }
+
+    function gotoForm(){
+        preventDefault()
+        location.href = '/form?res=true'
+    }
 }
