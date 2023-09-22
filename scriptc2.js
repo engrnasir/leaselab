@@ -200,7 +200,7 @@ const annualKmsValue = document.getElementById('kms-value')
 const leaseTermValue = document.getElementById('term-value')
 const driveAwayValue = document.getElementById('price-value')
 const methodSwitch = document.getElementById('Checkbox-2')
-const businessSlider = document.getElementById('business-slider')
+const businessSlider = document.getElementById('use-slider')
 const businessUseValue = document.getElementById('business-use-value')
 
     const model = getModel()
