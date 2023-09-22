@@ -1074,7 +1074,7 @@ const driveAwayValue = document.getElementById('price-value')
 
             const businessSlider = document.getElementById('business-slider')
             const businessUseValue = document.getElementById('business-use-value')
-            businessSlider.addEventListener('input', updateAllValues)
+            businessSlider.addEventListener('input',()=> updateAllValues(false))
             BUSINESS_USAGE = METHOD === 'Operating Cost Method' ? parseFloat(businessSlider.value)/100: 20/100;
             businessUseValue.innerHTML = parseFloat((BUSINESS_USAGE*100).toFixed(0)) + ' %'
         }else{
@@ -1095,7 +1095,7 @@ const driveAwayValue = document.getElementById('price-value')
         console.log('METHOD', METHOD);
     }
 
-async function  updateAllValues(costItem=false){
+async function  updateAllValues(costItem){
     GROSS_INCOME = parseFloat(taxableSlider.value)
     KM_PER_YEAR = parseFloat(annualKms.value)
     DRIVE_AWAY_PRICE = parseFloat(driveAway.value)
@@ -1143,10 +1143,10 @@ async function  updateAllValues(costItem=false){
   }
 
   function initialize(){
-    leaseTerm.addEventListener('input', updateAllValues)
-    taxableSlider.addEventListener('input', updateAllValues)
-    annualKms.addEventListener('input', updateAllValues)
-    driveAway.addEventListener('input', updateAllValues)
+    leaseTerm.addEventListener('input',()=> updateAllValues(false))
+    taxableSlider.addEventListener('input', ()=> updateAllValues(false))
+    annualKms.addEventListener('input', ()=> updateAllValues(false))
+    driveAway.addEventListener('input', ()=> updateAllValues(false))
     // methodSwitch.addEventListener('input', updateAllValues)
 
     electricityInput.addEventListener('input',()=> updateAllValues(true))
@@ -1160,7 +1160,7 @@ async function  updateAllValues(costItem=false){
     document.getElementById('get-quote-button').addEventListener('click', gotoForm)
 
 
-    updateAllValues()
+    updateAllValues(false)
   }
   initialize();
 
