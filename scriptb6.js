@@ -532,8 +532,7 @@ const methodSwitch = document.getElementById('Checkbox-2')
     }
         
     function updateMethod(){
-        methodSwitch.checked = true
-        console.log(methodSwitch.checked);
+
         if(driveAway.value < 94000){
             METHOD = 'FBT Exempt Method'
             document.getElementById('FBT_Slider').classList.add('closed')
@@ -550,10 +549,13 @@ const methodSwitch = document.getElementById('Checkbox-2')
             document.getElementById('method-name').innerText = 'Statutory Method'
         }
 
-        if(methodSwitch.checked === true){
+        if(methodSwitch.checked){
             METHOD = 'Operating Cost Method'
             document.getElementById('FBT_Slider').classList.remove('closed')
             document.getElementById('method-name').innerText = 'Operating Cost Method'
+            methodSwitch.classList.add('Checked')
+        }else{
+           methodSwitch.classList.remove('Checked')
        }
 
         console.log('METHOD', METHOD);
