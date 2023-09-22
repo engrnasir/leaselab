@@ -590,7 +590,7 @@ async function  updateAllValues(){
     
     await calculateSaving()
     
-    document.getElementById('monthlyBudgetVal').innerHTML = `MonthlyBudget - $${COST_PER_MONTH}`
+    document.getElementById('monthlyBudgetVal').innerHTML = `MonthlyBudget - $${COST_PER_MONTH.toFixed(0)}`
     document.getElementById('savings').innerHTML = TOTAL_SAVING_MONTHLY?TOTAL_SAVING_MONTHLY.toFixed(0):0
 
     if(leaseTerm.value<3){
