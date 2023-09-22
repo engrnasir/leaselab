@@ -287,14 +287,15 @@ const driveAwayValue = document.getElementById('price-value')
 
             const packages = document.querySelectorAll('.package')
             packages.forEach(el => el.classList.remove('active'))
-            if(leaseTerm.value<3){
+            if(leaseTerm.value===1){
                 packages[0].classList.add('active')
                 document.getElementById('package-small-price').innerHTML = `$${LEASE_PAYMERNT_PER_MONTH.toFixed(0)}pm`
-            }else if(leaseTerm.value>3){
+            }else if(leaseTerm.value===5){
                 packages[2].classList.add('active')
                 document.getElementById('package-large-price').innerHTML = `$${LEASE_PAYMERNT_PER_MONTH.toFixed(0)}pm`
             }else{
                 packages[1].classList.add('active')
+                document.getElementById('package-medium-years').innerHTML = `${leaseTerm.value}Yr.`
                 document.getElementById('package-medium-price').innerHTML = `$${LEASE_PAYMERNT_PER_MONTH.toFixed(0)}pm`
             }
 
@@ -536,6 +537,7 @@ const driveAwayValue = document.getElementById('price-value')
         if(driveAway.value < 94000){
             METHOD = 'FBT Exempt Method'
             document.getElementById('FBT_Slider').classList.add('closed')
+            document.getElementById('monthlyBudgetWrap').classList.add('closed')
             document.getElementById('method-name').innerText = 'Exempt Method'
             
         }else if(driveAway.value > 94000){
@@ -551,6 +553,7 @@ const driveAwayValue = document.getElementById('price-value')
             businessUseValue.innerHTML = parseFloat((BUSINESS_USAGE*100).toFixed(0)) + ' %'
         }else{
             document.getElementById('FBT_Slider').classList.add('closed')
+            document.getElementById('monthlyBudgetWrap').classList.add('closed')
             METHOD = 'Statutory Method'
             document.getElementById('method-name').innerText = 'Statutory Method'
         }
