@@ -587,10 +587,10 @@ async function  updateAllValues(){
     
     updateMethod()
 
-  	taxableSliderValue.innerHTML = `$${taxableSlider.value}/year`
-    annualKmsValue.innerHTML = `${annualKms.value} km's`
+  	taxableSliderValue.innerHTML = `$${(taxableSlider.value).toLocaleString("en-US")}/year`
+    annualKmsValue.innerHTML = `${(annualKms.value).toLocaleString("en-US")} km's`
     leaseTermValue.innerHTML = `${leaseTerm.value} Years`
-    driveAwayValue.innerHTML = `$${driveAway.value}`
+    driveAwayValue.innerHTML = `$${(driveAway.value).toLocaleString("en-US")}`
     
     await calculateMonthlyRunningCost()
     await calculateLeasePayment()
