@@ -1,5 +1,5 @@
 window.addEventListener('load',()=>{
- let NET_VEHICLE_GST = 0;
+  let NET_VEHICLE_GST = 0;
   let LEASE_PAYMERNT_PER_MONTH = 0
   let CLAIMABLE_TAX = 0
   let LEASE_PERIOD = 0
@@ -412,11 +412,7 @@ async function  updateAllValues(){
     otherInput.addEventListener('input', updateAllValues)
 
 
-    document.getElementById('monthly-budget').classList.add('close')
     updateAllValues()
-    document.getElementById('custom-budget').addEventListener('click', ()=>{
-    	document.getElementById('monthly-budget').classList.toggle('close')
-    })
   }
   initialize();
 })
