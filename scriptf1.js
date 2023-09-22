@@ -1,485 +1,4 @@
-const budgetedAmount = [
-    {
-        "Make": "Tesla",
-        "Model": "Model Y",
-        "Category": "Electricity",
-        "Amount": "85.90"
-    },
-    {
-        "Make": "Tesla",
-        "Model": "Model Y",
-        "Category": "Service & Maintenance",
-        "Amount": "48.75"
-    },
-    {
-        "Make": "Tesla",
-        "Model": "Model Y",
-        "Category": "Insurance",
-        "Amount": "148.64"
-    },
-    {
-        "Make": "Tesla",
-        "Model": "Model Y",
-        "Category": "Registration",
-        "Amount": "57.60"
-    },
-    {
-        "Make": "Tesla",
-        "Model": "Model Y",
-        "Category": "Tyres",
-        "Amount": "32.40"
-    },
-    {
-        "Make": "Tesla",
-        "Model": "Model Y",
-        "Category": "Roadsite Assistance",
-        "Amount": "29.44"
-    },
-    {
-        "Make": "Tesla",
-        "Model": "Model Y",
-        "Category": "Other",
-        "Amount": "6.15"
-    },
-    {
-        "Make": "Tesla",
-        "Model": "Model Y",
-        "Category": "Lease Management",
-        "Amount": "39.00"
-    },
-    {
-        "Make": "Tesla",
-        "Model": "Model 3",
-        "Category": "Electricity",
-        "Amount": "85.90"
-    },
-    {
-        "Make": "Tesla",
-        "Model": "Model 3",
-        "Category": "Service & Maintenance",
-        "Amount": "48.75"
-    },
-    {
-        "Make": "Tesla",
-        "Model": "Model 3",
-        "Category": "Insurance",
-        "Amount": "151.25"
-    },
-    {
-        "Make": "Tesla",
-        "Model": "Model 3",
-        "Category": "Registration",
-        "Amount": "56.49"
-    },
-    {
-        "Make": "Tesla",
-        "Model": "Model 3",
-        "Category": "Tyres",
-        "Amount": "38.04"
-    },
-    {
-        "Make": "Tesla",
-        "Model": "Model 3",
-        "Category": "Roadsite Assistance",
-        "Amount": "7.65"
-    },
-    {
-        "Make": "Tesla",
-        "Model": "Model 3",
-        "Category": "Other",
-        "Amount": "4.54"
-    },
-    {
-        "Make": "Tesla",
-        "Model": "Model 3",
-        "Category": "Lease Management",
-        "Amount": "39.00"
-    },
-    {
-        "Make": "BYD",
-        "Model": "Atto 3",
-        "Category": "Electricity",
-        "Amount": "85.90"
-    },
-    {
-        "Make": "BYD",
-        "Model": "Atto 3",
-        "Category": "Service & Maintenance",
-        "Amount": "48.75"
-    },
-    {
-        "Make": "BYD",
-        "Model": "Atto 3",
-        "Category": "Insurance",
-        "Amount": "123.54"
-    },
-    {
-        "Make": "BYD",
-        "Model": "Atto 3",
-        "Category": "Registration",
-        "Amount": "44.67"
-    },
-    {
-        "Make": "BYD",
-        "Model": "Atto 3",
-        "Category": "Tyres",
-        "Amount": "24.29"
-    },
-    {
-        "Make": "BYD",
-        "Model": "Atto 3",
-        "Category": "Roadsite Assistance",
-        "Amount": "1.97"
-    },
-    {
-        "Make": "BYD",
-        "Model": "Atto 3",
-        "Category": "Other",
-        "Amount": "5.00"
-    },
-    {
-        "Make": "BYD",
-        "Model": "Atto 3",
-        "Category": "Lease Management",
-        "Amount": "39.00"
-    },
-    {
-        "Make": "Volvo",
-        "Model": "XC40",
-        "Category": "Electricity",
-        "Amount": "85.90"
-    },
-    {
-        "Make": "Volvo",
-        "Model": "XC40",
-        "Category": "Service & Maintenance",
-        "Amount": "48.75"
-    },
-    {
-        "Make": "Volvo",
-        "Model": "XC40",
-        "Category": "Insurance",
-        "Amount": "194.40"
-    },
-    {
-        "Make": "Volvo",
-        "Model": "XC40",
-        "Category": "Registration",
-        "Amount": "53.13"
-    },
-    {
-        "Make": "Volvo",
-        "Model": "XC40",
-        "Category": "Tyres",
-        "Amount": "52.81"
-    },
-    {
-        "Make": "Volvo",
-        "Model": "XC40",
-        "Category": "Roadsite Assistance",
-        "Amount": "0.00"
-    },
-    {
-        "Make": "Volvo",
-        "Model": "XC40",
-        "Category": "Other",
-        "Amount": "14.78"
-    },
-    {
-        "Make": "Volvo",
-        "Model": "XC40",
-        "Category": "Lease Management",
-        "Amount": "39.00"
-    },
-    {
-        "Make": "Polestar",
-        "Model": "2",
-        "Category": "Electricity",
-        "Amount": "85.90"
-    },
-    {
-        "Make": "Polestar",
-        "Model": "2",
-        "Category": "Service & Maintenance",
-        "Amount": "48.75"
-    },
-    {
-        "Make": "Polestar",
-        "Model": "2",
-        "Category": "Insurance",
-        "Amount": "136.09"
-    },
-    {
-        "Make": "Polestar",
-        "Model": "2",
-        "Category": "Registration",
-        "Amount": "73.89"
-    },
-    {
-        "Make": "Polestar",
-        "Model": "2",
-        "Category": "Tyres",
-        "Amount": "42.61"
-    },
-    {
-        "Make": "Polestar",
-        "Model": "2",
-        "Category": "Roadsite Assistance",
-        "Amount": "59.09"
-    },
-    {
-        "Make": "Polestar",
-        "Model": "2",
-        "Category": "Other",
-        "Amount": "21.22"
-    },
-    {
-        "Make": "Polestar",
-        "Model": "2",
-        "Category": "Lease Management",
-        "Amount": "39.00"
-    },
-    {
-        "Make": "Hyundai",
-        "Model": "Ioniq 5",
-        "Category": "Electricity",
-        "Amount": "85.90"
-    },
-    {
-        "Make": "Hyundai",
-        "Model": "Ioniq 5",
-        "Category": "Service & Maintenance",
-        "Amount": "48.75"
-    },
-    {
-        "Make": "Hyundai",
-        "Model": "Ioniq 5",
-        "Category": "Insurance",
-        "Amount": "88.53"
-    },
-    {
-        "Make": "Hyundai",
-        "Model": "Ioniq 5",
-        "Category": "Registration",
-        "Amount": "66.67"
-    },
-    {
-        "Make": "Hyundai",
-        "Model": "Ioniq 5",
-        "Category": "Tyres",
-        "Amount": "36.11"
-    },
-    {
-        "Make": "Hyundai",
-        "Model": "Ioniq 5",
-        "Category": "Roadsite Assistance",
-        "Amount": "0.00"
-    },
-    {
-        "Make": "Hyundai",
-        "Model": "Ioniq 5",
-        "Category": "Other",
-        "Amount": "0.00"
-    },
-    {
-        "Make": "Hyundai",
-        "Model": "Ioniq 5",
-        "Category": "Lease Management",
-        "Amount": "39.00"
-    },
-    {
-        "Make": "Volvo",
-        "Model": "C40",
-        "Category": "Electricity",
-        "Amount": "85.90"
-    },
-    {
-        "Make": "Volvo",
-        "Model": "C40",
-        "Category": "Service & Maintenance",
-        "Amount": "48.75"
-    },
-    {
-        "Make": "Volvo",
-        "Model": "C40",
-        "Category": "Insurance",
-        "Amount": "133.91"
-    },
-    {
-        "Make": "Volvo",
-        "Model": "C40",
-        "Category": "Registration",
-        "Amount": "73.33"
-    },
-    {
-        "Make": "Volvo",
-        "Model": "C40",
-        "Category": "Tyres",
-        "Amount": "39.00"
-    },
-    {
-        "Make": "Volvo",
-        "Model": "C40",
-        "Category": "Roadsite Assistance",
-        "Amount": "0.00"
-    },
-    {
-        "Make": "Volvo",
-        "Model": "C40",
-        "Category": "Other",
-        "Amount": "0.00"
-    },
-    {
-        "Make": "Volvo",
-        "Model": "C40",
-        "Category": "Lease Management",
-        "Amount": "39.00"
-    },
-    {
-        "Make": "Kia",
-        "Model": "EV6",
-        "Category": "Electricity",
-        "Amount": "85.90"
-    },
-    {
-        "Make": "Kia",
-        "Model": "EV6",
-        "Category": "Service & Maintenance",
-        "Amount": "48.75"
-    },
-    {
-        "Make": "Kia",
-        "Model": "EV6",
-        "Category": "Insurance",
-        "Amount": "172.08"
-    },
-    {
-        "Make": "Kia",
-        "Model": "EV6",
-        "Category": "Registration",
-        "Amount": "56.67"
-    },
-    {
-        "Make": "Kia",
-        "Model": "EV6",
-        "Category": "Tyres",
-        "Amount": "52.00"
-    },
-    {
-        "Make": "Kia",
-        "Model": "EV6",
-        "Category": "Roadsite Assistance",
-        "Amount": "0.00"
-    },
-    {
-        "Make": "Kia",
-        "Model": "EV6",
-        "Category": "Other",
-        "Amount": "0.00"
-    },
-    {
-        "Make": "Kia",
-        "Model": "EV6",
-        "Category": "Lease Management",
-        "Amount": "39.00"
-    },
-    {
-        "Make": "MG",
-        "Model": "ZS EV",
-        "Category": "Electricity",
-        "Amount": "85.90"
-    },
-    {
-        "Make": "MG",
-        "Model": "ZS EV",
-        "Category": "Service & Maintenance",
-        "Amount": "48.75"
-    },
-    {
-        "Make": "MG",
-        "Model": "ZS EV",
-        "Category": "Insurance",
-        "Amount": "100.85"
-    },
-    {
-        "Make": "MG",
-        "Model": "ZS EV",
-        "Category": "Registration",
-        "Amount": "50.57"
-    },
-    {
-        "Make": "MG",
-        "Model": "ZS EV",
-        "Category": "Tyres",
-        "Amount": "30.51"
-    },
-    {
-        "Make": "MG",
-        "Model": "ZS EV",
-        "Category": "Roadsite Assistance",
-        "Amount": "0.00"
-    },
-    {
-        "Make": "MG",
-        "Model": "ZS EV",
-        "Category": "Other",
-        "Amount": "0.00"
-    },
-    {
-        "Make": "MG",
-        "Model": "ZS EV",
-        "Category": "Lease Management",
-        "Amount": "39.00"
-    },
-    {
-        "Make": "Kia",
-        "Model": "Niro",
-        "Category": "Electricity",
-        "Amount": "85.90"
-    },
-    {
-        "Make": "Kia",
-        "Model": "Niro",
-        "Category": "Service & Maintenance",
-        "Amount": "48.75"
-    },
-    {
-        "Make": "Kia",
-        "Model": "Niro",
-        "Category": "Insurance",
-        "Amount": "163.25"
-    },
-    {
-        "Make": "Kia",
-        "Model": "Niro",
-        "Category": "Registration",
-        "Amount": "56.67"
-    },
-    {
-        "Make": "Kia",
-        "Model": "Niro",
-        "Category": "Tyres",
-        "Amount": "26.00"
-    },
-    {
-        "Make": "Kia",
-        "Model": "Niro",
-        "Category": "Roadsite Assistance",
-        "Amount": "0.00"
-    },
-    {
-        "Make": "Kia",
-        "Model": "Niro",
-        "Category": "Other",
-        "Amount": "0.00"
-    },
-    {
-        "Make": "Kia",
-        "Model": "Niro",
-        "Category": "Lease Management",
-        "Amount": "39.00"
-    }
-]
+ let budgetedAmount = []
 const vehicles = [
     {
         make:'Tesla',
@@ -671,6 +190,7 @@ const IncomTax = [
     let LEASE_MANAGEMENT_FEE = 0
 
     let SELECTED_VEHICLE = ""
+    let VEHICLE_M = {}
 
    function getModel(){
        const url = window.location.href
@@ -679,7 +199,499 @@ const IncomTax = [
        const model = url_arr[len-1]
         return model
     }
+    function calculateBudgets(){
+        budgetedAmount =  [
+            {
+                "Make": "Tesla",
+                "Model": "Model Y",
+                "Category": "Electricity",
+                "Amount": ((KM_PER_YEAR* assumptions.ElectricityDefaultValue*assumptions.ElectricityCostCentsPerkWH)/12).toFixed(2)
+            },
+            {
+                "Make": "Tesla",
+                "Model": "Model Y",
+                "Category": "Service & Maintenance",
+                "Amount": ((KM_PER_YEAR* assumptions.MaintenanceMultiplier*assumptions.MaintenanceFee)/12).toFixed(2)
+            },
+            {
+                "Make": "Tesla",
+                "Model": "Model Y",
+                "Category": "Insurance",
+                "Amount": "148.64"
+            },
+            {
+                "Make": "Tesla",
+                "Model": "Model Y",
+                "Category": "Registration",
+                "Amount": "57.60"
+            },
+            {
+                "Make": "Tesla",
+                "Model": "Model Y",
+                "Category": "Tyres",
+                "Amount": "32.40"
+            },
+            {
+                "Make": "Tesla",
+                "Model": "Model Y",
+                "Category": "Roadsite Assistance",
+                "Amount": "29.44"
+            },
+            {
+                "Make": "Tesla",
+                "Model": "Model Y",
+                "Category": "Other",
+                "Amount": "6.15"
+            },
+            {
+                "Make": "Tesla",
+                "Model": "Model Y",
+                "Category": "Lease Management",
+                "Amount": "39.00"
+            },
+            {
+                "Make": "Tesla",
+                "Model": "Model 3",
+                "Category": "Electricity",
+                "Amount": ((KM_PER_YEAR* assumptions.ElectricityDefaultValue*assumptions.ElectricityCostCentsPerkWH)/12).toFixed(2)
+            },
+            {
+                "Make": "Tesla",
+                "Model": "Model 3",
+                "Category": "Service & Maintenance",
+                "Amount": ((KM_PER_YEAR* assumptions.MaintenanceMultiplier*assumptions.MaintenanceFee)/12).toFixed(2)
+            },
+            {
+                "Make": "Tesla",
+                "Model": "Model 3",
+                "Category": "Insurance",
+                "Amount": "151.25"
+            },
+            {
+                "Make": "Tesla",
+                "Model": "Model 3",
+                "Category": "Registration",
+                "Amount": "56.49"
+            },
+            {
+                "Make": "Tesla",
+                "Model": "Model 3",
+                "Category": "Tyres",
+                "Amount": "38.04"
+            },
+            {
+                "Make": "Tesla",
+                "Model": "Model 3",
+                "Category": "Roadsite Assistance",
+                "Amount": "7.65"
+            },
+            {
+                "Make": "Tesla",
+                "Model": "Model 3",
+                "Category": "Other",
+                "Amount": "4.54"
+            },
+            {
+                "Make": "Tesla",
+                "Model": "Model 3",
+                "Category": "Lease Management",
+                "Amount": "39.00"
+            },
+            {
+                "Make": "BYD",
+                "Model": "Atto 3",
+                "Category": "Electricity",
+                "Amount": ((KM_PER_YEAR* assumptions.ElectricityDefaultValue*assumptions.ElectricityCostCentsPerkWH)/12).toFixed(2)
+            },
+            {
+                "Make": "BYD",
+                "Model": "Atto 3",
+                "Category": "Service & Maintenance",
+                "Amount": ((KM_PER_YEAR* assumptions.MaintenanceMultiplier*assumptions.MaintenanceFee)/12).toFixed(2)
+            },
+            {
+                "Make": "BYD",
+                "Model": "Atto 3",
+                "Category": "Insurance",
+                "Amount": "123.54"
+            },
+            {
+                "Make": "BYD",
+                "Model": "Atto 3",
+                "Category": "Registration",
+                "Amount": "44.67"
+            },
+            {
+                "Make": "BYD",
+                "Model": "Atto 3",
+                "Category": "Tyres",
+                "Amount": "24.29"
+            },
+            {
+                "Make": "BYD",
+                "Model": "Atto 3",
+                "Category": "Roadsite Assistance",
+                "Amount": "1.97"
+            },
+            {
+                "Make": "BYD",
+                "Model": "Atto 3",
+                "Category": "Other",
+                "Amount": "5.00"
+            },
+            {
+                "Make": "BYD",
+                "Model": "Atto 3",
+                "Category": "Lease Management",
+                "Amount": "39.00"
+            },
+            {
+                "Make": "Volvo",
+                "Model": "XC40",
+                "Category": "Electricity",
+                "Amount": ((KM_PER_YEAR* assumptions.ElectricityDefaultValue*assumptions.ElectricityCostCentsPerkWH)/12).toFixed(2)
+            },
+            {
+                "Make": "Volvo",
+                "Model": "XC40",
+                "Category": "Service & Maintenance",
+                "Amount": ((KM_PER_YEAR* assumptions.MaintenanceMultiplier*assumptions.MaintenanceFee)/12).toFixed(2)
+            },
+            {
+                "Make": "Volvo",
+                "Model": "XC40",
+                "Category": "Insurance",
+                "Amount": "194.40"
+            },
+            {
+                "Make": "Volvo",
+                "Model": "XC40",
+                "Category": "Registration",
+                "Amount": "53.13"
+            },
+            {
+                "Make": "Volvo",
+                "Model": "XC40",
+                "Category": "Tyres",
+                "Amount": "52.81"
+            },
+            {
+                "Make": "Volvo",
+                "Model": "XC40",
+                "Category": "Roadsite Assistance",
+                "Amount": "0.00"
+            },
+            {
+                "Make": "Volvo",
+                "Model": "XC40",
+                "Category": "Other",
+                "Amount": "14.78"
+            },
+            {
+                "Make": "Volvo",
+                "Model": "XC40",
+                "Category": "Lease Management",
+                "Amount": "39.00"
+            },
+            {
+                "Make": "Polestar",
+                "Model": "2",
+                "Category": "Electricity",
+                "Amount":((KM_PER_YEAR* assumptions.ElectricityDefaultValue*assumptions.ElectricityCostCentsPerkWH)/12).toFixed(2)
+            },
+            {
+                "Make": "Polestar",
+                "Model": "2",
+                "Category": "Service & Maintenance",
+                "Amount": ((KM_PER_YEAR* assumptions.MaintenanceMultiplier*assumptions.MaintenanceFee)/12).toFixed(2)
+            },
+            {
+                "Make": "Polestar",
+                "Model": "2",
+                "Category": "Insurance",
+                "Amount": "136.09"
+            },
+            {
+                "Make": "Polestar",
+                "Model": "2",
+                "Category": "Registration",
+                "Amount": "73.89"
+            },
+            {
+                "Make": "Polestar",
+                "Model": "2",
+                "Category": "Tyres",
+                "Amount": "42.61"
+            },
+            {
+                "Make": "Polestar",
+                "Model": "2",
+                "Category": "Roadsite Assistance",
+                "Amount": "59.09"
+            },
+            {
+                "Make": "Polestar",
+                "Model": "2",
+                "Category": "Other",
+                "Amount": "21.22"
+            },
+            {
+                "Make": "Polestar",
+                "Model": "2",
+                "Category": "Lease Management",
+                "Amount": "39.00"
+            },
+            {
+                "Make": "Hyundai",
+                "Model": "Ioniq 5",
+                "Category": "Electricity",
+                "Amount": ((KM_PER_YEAR* assumptions.ElectricityDefaultValue*assumptions.ElectricityCostCentsPerkWH)/12).toFixed(2)
+            },
+            {
+                "Make": "Hyundai",
+                "Model": "Ioniq 5",
+                "Category": "Service & Maintenance",
+                "Amount": ((KM_PER_YEAR* assumptions.MaintenanceMultiplier*assumptions.MaintenanceFee)/12).toFixed(2)
+            },
+            {
+                "Make": "Hyundai",
+                "Model": "Ioniq 5",
+                "Category": "Insurance",
+                "Amount": "88.53"
+            },
+            {
+                "Make": "Hyundai",
+                "Model": "Ioniq 5",
+                "Category": "Registration",
+                "Amount": "66.67"
+            },
+            {
+                "Make": "Hyundai",
+                "Model": "Ioniq 5",
+                "Category": "Tyres",
+                "Amount": "36.11"
+            },
+            {
+                "Make": "Hyundai",
+                "Model": "Ioniq 5",
+                "Category": "Roadsite Assistance",
+                "Amount": "0.00"
+            },
+            {
+                "Make": "Hyundai",
+                "Model": "Ioniq 5",
+                "Category": "Other",
+                "Amount": "0.00"
+            },
+            {
+                "Make": "Hyundai",
+                "Model": "Ioniq 5",
+                "Category": "Lease Management",
+                "Amount": "39.00"
+            },
+            {
+                "Make": "Volvo",
+                "Model": "C40",
+                "Category": "Electricity",
+                "Amount":((KM_PER_YEAR* assumptions.ElectricityDefaultValue*assumptions.ElectricityCostCentsPerkWH)/12).toFixed(2)
+            },
+            {
+                "Make": "Volvo",
+                "Model": "C40",
+                "Category": "Service & Maintenance",
+                "Amount": ((KM_PER_YEAR* assumptions.MaintenanceMultiplier*assumptions.MaintenanceFee)/12).toFixed(2)
+            },
+            {
+                "Make": "Volvo",
+                "Model": "C40",
+                "Category": "Insurance",
+                "Amount": "133.91"
+            },
+            {
+                "Make": "Volvo",
+                "Model": "C40",
+                "Category": "Registration",
+                "Amount": "73.33"
+            },
+            {
+                "Make": "Volvo",
+                "Model": "C40",
+                "Category": "Tyres",
+                "Amount": "39.00"
+            },
+            {
+                "Make": "Volvo",
+                "Model": "C40",
+                "Category": "Roadsite Assistance",
+                "Amount": "0.00"
+            },
+            {
+                "Make": "Volvo",
+                "Model": "C40",
+                "Category": "Other",
+                "Amount": "0.00"
+            },
+            {
+                "Make": "Volvo",
+                "Model": "C40",
+                "Category": "Lease Management",
+                "Amount": "39.00"
+            },
+            {
+                "Make": "Kia",
+                "Model": "EV6",
+                "Category": "Electricity",
+                "Amount":((KM_PER_YEAR* assumptions.ElectricityDefaultValue*assumptions.ElectricityCostCentsPerkWH)/12).toFixed(2)
+            },
+            {
+                "Make": "Kia",
+                "Model": "EV6",
+                "Category": "Service & Maintenance",
+                "Amount": ((KM_PER_YEAR* assumptions.MaintenanceMultiplier*assumptions.MaintenanceFee)/12).toFixed(2)
+            },
+            {
+                "Make": "Kia",
+                "Model": "EV6",
+                "Category": "Insurance",
+                "Amount": "172.08"
+            },
+            {
+                "Make": "Kia",
+                "Model": "EV6",
+                "Category": "Registration",
+                "Amount": "56.67"
+            },
+            {
+                "Make": "Kia",
+                "Model": "EV6",
+                "Category": "Tyres",
+                "Amount": "52.00"
+            },
+            {
+                "Make": "Kia",
+                "Model": "EV6",
+                "Category": "Roadsite Assistance",
+                "Amount": "0.00"
+            },
+            {
+                "Make": "Kia",
+                "Model": "EV6",
+                "Category": "Other",
+                "Amount": "0.00"
+            },
+            {
+                "Make": "Kia",
+                "Model": "EV6",
+                "Category": "Lease Management",
+                "Amount": "39.00"
+            },
+            {
+                "Make": "MG",
+                "Model": "ZS EV",
+                "Category": "Electricity",
+                "Amount": ((KM_PER_YEAR* assumptions.ElectricityDefaultValue*assumptions.ElectricityCostCentsPerkWH)/12).toFixed(2)
+            },
+            {
+                "Make": "MG",
+                "Model": "ZS EV",
+                "Category": "Service & Maintenance",
+                "Amount": ((KM_PER_YEAR* assumptions.MaintenanceMultiplier*assumptions.MaintenanceFee)/12).toFixed(2)
+            },
+            {
+                "Make": "MG",
+                "Model": "ZS EV",
+                "Category": "Insurance",
+                "Amount": "100.85"
+            },
+            {
+                "Make": "MG",
+                "Model": "ZS EV",
+                "Category": "Registration",
+                "Amount": "50.57"
+            },
+            {
+                "Make": "MG",
+                "Model": "ZS EV",
+                "Category": "Tyres",
+                "Amount": "30.51"
+            },
+            {
+                "Make": "MG",
+                "Model": "ZS EV",
+                "Category": "Roadsite Assistance",
+                "Amount": "0.00"
+            },
+            {
+                "Make": "MG",
+                "Model": "ZS EV",
+                "Category": "Other",
+                "Amount": "0.00"
+            },
+            {
+                "Make": "MG",
+                "Model": "ZS EV",
+                "Category": "Lease Management",
+                "Amount": "39.00"
+            },
+            {
+                "Make": "Kia",
+                "Model": "Niro",
+                "Category": "Electricity",
+                "Amount": ((KM_PER_YEAR* assumptions.ElectricityDefaultValue*assumptions.ElectricityCostCentsPerkWH)/12).toFixed(2)
+            },
+            {
+                "Make": "Kia",
+                "Model": "Niro",
+                "Category": "Service & Maintenance",
+                "Amount": ((KM_PER_YEAR* assumptions.MaintenanceMultiplier*assumptions.MaintenanceFee)/12).toFixed(2)
+            },
+            {
+                "Make": "Kia",
+                "Model": "Niro",
+                "Category": "Insurance",
+                "Amount": "163.25"
+            },
+            {
+                "Make": "Kia",
+                "Model": "Niro",
+                "Category": "Registration",
+                "Amount": "56.67"
+            },
+            {
+                "Make": "Kia",
+                "Model": "Niro",
+                "Category": "Tyres",
+                "Amount": "26.00"
+            },
+            {
+                "Make": "Kia",
+                "Model": "Niro",
+                "Category": "Roadsite Assistance",
+                "Amount": "0.00"
+            },
+            {
+                "Make": "Kia",
+                "Model": "Niro",
+                "Category": "Other",
+                "Amount": "0.00"
+            },
+            {
+                "Make": "Kia",
+                "Model": "Niro",
+                "Category": "Lease Management",
+                "Amount": "39.00"
+            }
+        ]
+        return budgetedAmount
+    }
 
+    function calculateOperatingItemValue(category){
+        let Make = VEHICLE_M.make;
+        let Model = VEHICLE_M.modelName;
+        let Category = category;
+        let budget = budgetedAmount.find(el => el.Make===Make && el.Category === Category && el.Model === Model)
+        return budget? parseFloat(budget.Amount) : 0;
+    }
 function initializeCalculations(){
 
 console.log('calculations initialized');
@@ -696,27 +708,33 @@ const driveAwayValue = document.getElementById('price-value')
 
     annualKms.value = KM_PER_YEAR
     const model = getModel()
-    const vehicle = vehicles.find(el => el.model === model)
+    const vehicle = VEHICLE_M = vehicles.find(el => el.model === model)
     SELECTED_VEHICLE = vehicle.make + " " + vehicle.modelName
     DRIVE_AWAY_PRICE = driveAway.value = vehicle.driveAwayPrice
     METHOD = vehicle.driveAwayPrice < 94000? 'FBT Exempt Method': vehicle.driveAwayPrice>94000? 'Operating Cost Method' : 'Statutory Method'
 
-    function calculateOperatingItemValue(category){
-        let Make = vehicle.make;
-        let Model = vehicle.modelName;
-        let Category = category;
-        let budget = budgetedAmount.find(el => el.Make===Make && el.Category === Category && el.Model === Model)
-        return budget? parseFloat(budget.Amount) : 0;
+    calculateAssumptions()
+    calculateBudgets()
+
+    function updateOperatingCostItems(){
+        ELECTRICITY_FEE = calculateOperatingItemValue('Electricity')
+        MAINTENANCE_FEE = calculateOperatingItemValue('Service & Maintenance')
+        INSURANCE_FEE = calculateOperatingItemValue('Insurance')
+        REGISTRATION_FEE = calculateOperatingItemValue('Registration')
+        TYRES_FEE = calculateOperatingItemValue('Tyres')
+        ROADSIDE_FEE = calculateOperatingItemValue('Roadsite Assistance')
+        OTHERS_FEE = calculateOperatingItemValue('Other')
+        LEASE_MANAGEMENT_FEE = calculateOperatingItemValue('Lease Management')
+
+        electricityInput.value = ELECTRICITY_FEE
+        maintenanceInput.value = MAINTENANCE_FEE
+        insuranceInput.value = INSURANCE_FEE
+        registrationInput.value = REGISTRATION_FEE
+        tyresInput.value = TYRES_FEE
+        roadsideInput.value = ROADSIDE_FEE
+        otherInput.value = OTHERS_FEE
     }
-    
-    ELECTRICITY_FEE = calculateOperatingItemValue('Electricity')
-    MAINTENANCE_FEE = calculateOperatingItemValue('Service & Maintenance')
-    INSURANCE_FEE = calculateOperatingItemValue('Insurance')
-    REGISTRATION_FEE = calculateOperatingItemValue('Registration')
-    TYRES_FEE = calculateOperatingItemValue('Tyres')
-    ROADSIDE_FEE = calculateOperatingItemValue('Roadsite Assistance')
-    OTHERS_FEE = calculateOperatingItemValue('Other')
-    LEASE_MANAGEMENT_FEE = calculateOperatingItemValue('Lease Management')
+    updateOperatingCostItems()
 
 
     taxableSliderValue.innerHTML = taxableSlider.value
@@ -823,15 +841,14 @@ const driveAwayValue = document.getElementById('price-value')
                 return -(numerator / denominator);
             }
         function calculateMonthlyRunningCost (){
-            // ELECTRICITY_FEE = parseFloat(electricityInput.value?electricityInput.value: 85.90)
-            // MAINTENANCE_FEE = parseFloat(maintenanceInput.value?maintenanceInput.value:  48.75)
-            // INSURANCE_FEE  = parseFloat(insuranceInput.value?insuranceInput.value: 148.64)
-            // REGISTRATION_FEE = parseFloat(registrationInput.value?registrationInput.value:  57.60)
-            // TYRES_FEE = parseFloat(tyresInput.value?tyresInput.value: 32.40)
-            // ROADSIDE_FEE = parseFloat(roadsideInput.value?roadsideInput.value:  29.44)
-            // OTHERS_FEE = parseFloat(otherInput.value?otherInput.value:  6.15)
-            // LEASE_MANAGEMENT_FEE = 39
-
+            ELECTRICITY_FEE = parseFloat(electricityInput.value?electricityInput.value: 85.90)
+            MAINTENANCE_FEE = parseFloat(maintenanceInput.value?maintenanceInput.value:  48.75)
+            INSURANCE_FEE  = parseFloat(insuranceInput.value?insuranceInput.value: 148.64)
+            REGISTRATION_FEE = parseFloat(registrationInput.value?registrationInput.value:  57.60)
+            TYRES_FEE = parseFloat(tyresInput.value?tyresInput.value: 32.40)
+            ROADSIDE_FEE = parseFloat(roadsideInput.value?roadsideInput.value:  29.44)
+            OTHERS_FEE = parseFloat(otherInput.value?otherInput.value:  6.15)
+            LEASE_MANAGEMENT_FEE = 39
             electricityInput.value = ELECTRICITY_FEE
             maintenanceInput.value = MAINTENANCE_FEE
             insuranceInput.value = INSURANCE_FEE
@@ -1085,14 +1102,19 @@ async function  updateAllValues(){
     KM_PER_YEAR = parseFloat(annualKms.value)
     DRIVE_AWAY_PRICE = parseFloat(driveAway.value)
     
-    updateMethod()
+    await calculateAssumptions()
+
+    await calculateBudgets()
+
+    await updateOperatingCostItems()
+
+    await updateMethod()
 
   	taxableSliderValue.innerHTML = `$${numberWithCommas(taxableSlider.value)}/year`
     annualKmsValue.innerHTML = `${numberWithCommas(annualKms.value)} km's`
     leaseTermValue.innerHTML = `${leaseTerm.value} Years`
     driveAwayValue.innerHTML = `$${numberWithCommas(driveAway.value)}`
     
-    await calculateAssumptions()
     await calculateMonthlyRunningCost()
     await calculateLeasePayment()
     await calculateFBTExempt()
