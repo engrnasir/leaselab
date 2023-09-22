@@ -174,7 +174,7 @@ const IncomTax = [
 
   let GROSS_INCOME =   0;    //Taxable values
   let KM_PER_YEAR = 0
-  let BUSINESS_USAGE = 1 // 100%
+  let BUSINESS_USAGE = 20 // 20%
   let METHOD = 'Operating Cost Method'
 
    // CUSTOM VARIABLES
@@ -208,8 +208,8 @@ const businessUseValue = document.getElementById('business-use-value')
     driveAway.value = vehicle.driveAwayPrice
     METHOD = vehicle.driveAwayPrice < 94000? 'FBT Exempt Method': vehicle.driveAwayPrice>94000? 'Operating Cost Method' : 'Statutory Method'
 
-    BUSINESS_USAGE = METHOD === 'Operating Cost Method' ? businessSlider.value/100: 20/100;
-    businessUseValue.innerHTML = BUSINESS_USAGE + ' %'
+    BUSINESS_USAGE = METHOD === 'Operating Cost Method' ? parseFloat(businessSlider.value)/100: 20/100;
+    businessUseValue.innerHTML = BUSINESS_USAGE*100 + ' %'
 
     taxableSliderValue.innerHTML = taxableSlider.value
     annualKmsValue.innerHTML = annualKms.value
@@ -570,8 +570,8 @@ async function  updateAllValues(){
     
     updateMethod()
 
-    BUSINESS_USAGE = METHOD === 'Operating Cost Method' ? businessSlider.value/100: 20/100;
-    businessUseValue.innerHTML = BUSINESS_USAGE + ' %'
+    BUSINESS_USAGE = METHOD === 'Operating Cost Method' ? parseFloat(businessSlider.value)/100: 20/100;
+    businessUseValue.innerHTML = BUSINESS_USAGE*100 + ' %'
   
 
   	taxableSliderValue.innerHTML = `$${taxableSlider.value}/year`
