@@ -202,8 +202,6 @@ const driveAwayValue = document.getElementById('price-value')
 
     const model = getModel()
     const vehicle = vehicles.find(el => el.model === model)
-    console.log('model',model);
-    console.log('vehicle',vehicle);
     driveAway.value = vehicle.driveAwayPrice
     METHOD = vehicle.driveAwayPrice < 94000? 'FBT Exempt Method': vehicle.driveAwayPrice>94000? 'Operating Cost Method' : 'Statutory Method'
 
@@ -532,13 +530,27 @@ const driveAwayValue = document.getElementById('price-value')
         
     }
         
+    function updateMethod(){
 
+        if(driveAway.value < 94000){
+            METHOD = 'FBT Exempt Method'
+            document.getElementById('FBT_Slider').classList.add('closed')
+            
+        }else if(driveAway.value > 94000){
+            METHOD = 'Operating Cost Method'
+            document.getElementById('FBT_Slider').classList.remove('closed')
+        }else{
+            document.getElementById('FBT_Slider').classList.add('closed')
+            METHOD = 'Statutory Method'
+        }
+
+        console.log('METHOD', METHOD);
+    }
 
 async function  updateAllValues(){
     GROSS_INCOME = parseFloat(taxableSlider.value)
     KM_PER_YEAR = parseFloat(annualKms.value)
-    METHOD = driveAway.value < 94000? 'FBT Exempt Method':  driveAway.value>94000? 'Operating Cost Method' : 'Statutory Method'
-
+    updateMethod()
 
   	taxableSliderValue.innerHTML = `$${taxableSlider.value}/year`
     annualKmsValue.innerHTML = `${annualKms.value} km's`
