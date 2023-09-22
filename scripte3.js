@@ -644,7 +644,6 @@ async function  updateAllValues(){
     }
 
     function gotoForm(){
-        preventDefault()
         location.href = '/form?res=true'
     }
 }
