@@ -200,11 +200,16 @@ const annualKmsValue = document.getElementById('kms-value')
 const leaseTermValue = document.getElementById('term-value')
 const driveAwayValue = document.getElementById('price-value')
 const methodSwitch = document.getElementById('Checkbox-2')
+const businessSlider = document.getElementById('business-slider')
+const businessUseValue = document.getElementById('business-use-value')
 
     const model = getModel()
     const vehicle = vehicles.find(el => el.model === model)
     driveAway.value = vehicle.driveAwayPrice
     METHOD = vehicle.driveAwayPrice < 94000? 'FBT Exempt Method': vehicle.driveAwayPrice>94000? 'Operating Cost Method' : 'Statutory Method'
+
+    BUSINESS_USAGE = METHOD === 'Operating Cost Method' ? businessSlider.value/100: 20/100;
+    businessUseValue.value = BUSINESS_USAGE + ' %'
 
     taxableSliderValue.innerHTML = taxableSlider.value
     annualKmsValue.innerHTML = annualKms.value
@@ -565,6 +570,8 @@ async function  updateAllValues(){
     
     updateMethod()
 
+    BUSINESS_USAGE = METHOD === 'Operating Cost Method' ? businessSlider.value/100: 20/100;
+    businessUseValue.value = BUSINESS_USAGE + ' %'
   
 
   	taxableSliderValue.innerHTML = `$${taxableSlider.value}/year`
@@ -607,6 +614,7 @@ async function  updateAllValues(){
     tyresInput.addEventListener('input', updateAllValues)
     roadsideInput.addEventListener('input', updateAllValues)
     otherInput.addEventListener('input', updateAllValues)
+    businessSlider.addEventListener('input', updateAllValues)
 
 
     updateAllValues()
