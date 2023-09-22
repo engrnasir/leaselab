@@ -706,6 +706,14 @@ const leaseTermValue = document.getElementById('term-value')
 const driveAwayValue = document.getElementById('price-value')
 // const methodSwitch = document.getElementById('Checkbox-2')
 
+    const electricityInput = document.getElementById('electricity-value')
+  const maintenanceInput = document.getElementById('maintenance-value')
+  const insuranceInput = document.getElementById('insurance-value')
+  const registrationInput = document.getElementById('registration-value')
+  const tyresInput = document.getElementById('tyres-value')
+  const roadsideInput = document.getElementById('roadside-value')
+  const otherInput = document.getElementById('other-value')
+
     annualKms.value = KM_PER_YEAR
     const model = getModel()
     const vehicle = VEHICLE_M = vehicles.find(el => el.model === model)
@@ -742,16 +750,6 @@ const driveAwayValue = document.getElementById('price-value')
     leaseTermValue.innerHTML = leaseTerm.value
     driveAwayValue.innerHTML = driveAway.value
 
-
-
-        
-  const electricityInput = document.getElementById('electricity-value')
-  const maintenanceInput = document.getElementById('maintenance-value')
-  const insuranceInput = document.getElementById('insurance-value')
-  const registrationInput = document.getElementById('registration-value')
-  const tyresInput = document.getElementById('tyres-value')
-  const roadsideInput = document.getElementById('roadside-value')
-  const otherInput = document.getElementById('other-value')
 
  
 
