@@ -542,14 +542,14 @@ const methodSwitch = document.getElementById('switch')
             METHOD = 'Operating Cost Method'
             document.getElementById('FBT_Slider').classList.remove('closed')
             document.getElementById('method-name').innerText = 'Operating Cost Method'
-            methodSwitch.value = true
+            methodSwitch.value = 'on'
         }else{
             document.getElementById('FBT_Slider').classList.add('closed')
             METHOD = 'Statutory Method'
             document.getElementById('method-name').innerText = 'Statutory Method'
         }
 
-        if(methodSwitch.value === true){
+        if(methodSwitch.value === 'on'){
             METHOD = 'Operating Cost Method'
             document.getElementById('FBT_Slider').classList.remove('closed')
             document.getElementById('method-name').innerText = 'Operating Cost Method'
