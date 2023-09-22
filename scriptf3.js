@@ -815,14 +815,14 @@ const driveAwayValue = document.getElementById('price-value')
             packages.forEach(el => el.classList.remove('active'))
             if(leaseTerm.value==1){
                 packages[0].classList.add('active')  
-                document.getElementById('package-small-price').innerHTML = `$${numberWithCommas(parseFloat(LEASE_PAYMERNT_PER_MONTH.toFixed(0)))  }pm`
+                document.getElementById('package-small-price').innerHTML = `$${numberWithCommas(parseFloat(COST_PER_WEEK.toFixed(0)))  }pw`
             }else if(leaseTerm.value==5){
                 packages[2].classList.add('active')
-                document.getElementById('package-large-price').innerHTML = `$${numberWithCommas(parseFloat(LEASE_PAYMERNT_PER_MONTH.toFixed(0)))}pm`
+                document.getElementById('package-large-price').innerHTML = `$${numberWithCommas(parseFloat(COST_PER_WEEK.toFixed(0)))}pw`
             }else{
                 packages[1].classList.add('active')
                 document.getElementById('package-medium-years').innerHTML = `${leaseTerm.value} Yr.`
-                document.getElementById('package-medium-price').innerHTML = `$${numberWithCommas(parseFloat(LEASE_PAYMERNT_PER_MONTH.toFixed(0)))}pm`
+                document.getElementById('package-medium-price').innerHTML = `$${numberWithCommas(parseFloat(COST_PER_WEEK.toFixed(0)))}pw`
             }
 
 
