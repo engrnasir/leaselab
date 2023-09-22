@@ -532,6 +532,7 @@ const methodSwitch = document.getElementById('Checkbox-2')
     }
         
     function updateMethod(){
+        methodSwitch.checked = true
         console.log(methodSwitch.checked);
         if(driveAway.value < 94000){
             METHOD = 'FBT Exempt Method'
