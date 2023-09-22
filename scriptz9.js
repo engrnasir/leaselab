@@ -1111,10 +1111,10 @@ async function  updateAllValues(costItem){
 
     await updateMethod()
 
-  	taxableSliderValue.innerHTML = `$${numberWithCommas(taxableSlider.value)}/year`
-    annualKmsValue.innerHTML = `${numberWithCommas(annualKms.value)} km's`
+  	taxableSliderValue.innerHTML = `$${ taxableSlider.value>220000? '220,000+': numberWithCommas(taxableSlider.value) }/year`
+    annualKmsValue.innerHTML = `${ annualKms.value>30000? '30,000+' : numberWithCommas(annualKms.value) } km's`
     leaseTermValue.innerHTML = `${leaseTerm.value} Years`
-    driveAwayValue.innerHTML = `$${numberWithCommas(driveAway.value)}`
+    driveAwayValue.innerHTML = `$${ numberWithCommas(driveAway.value) }`
     
     await calculateMonthlyRunningCost()
     await calculateLeasePayment()
@@ -1171,13 +1171,16 @@ async function  updateAllValues(costItem){
     updateAllValues(false)
   }
 
-  
+  function roundoff(x){
+    return parseFloat(x.toFixed(2))
+  }
+
   function numberWithCommas(x) {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     
     function gotoForm(){
-        const URL = `/form?firstName=${"oskar"}&lastName=${"rutten"}&phone=${"477440329"}&email=${"rutten.oskar@gmail.com"}&employer=${''}&car=${SELECTED_VEHICLE}&businessUse=${BUSINESS_USAGE}&term=${LEASE_PERIOD/12}&income=${OVERALL_INCOME_TAX_SAVING}&carPrice=${DRIVE_AWAY_PRICE}&fbtMethod=${METHOD}&electricty=${ELECTRICITY_FEE}&service=${MAINTENANCE_FEE}&insurance=${INSURANCE_FEE}&regisration=${REGISTRATION_FEE}&tyres=${TYRES_FEE}&roadside=${ROADSIDE_FEE}&incidentalother=${OTHERS_FEE}&carColour=${''}&quoteCPW=${COST_PER_WEEK}&savingsPm=${OVERALL_INCOME_TAX_SAVING}&kmPerYear=${KM_PER_YEAR}&totalSavedTax=${TOTAL_SAVING_OVERALL}`
+        const URL = `/form?firstName=${"oskar"}&lastName=${"rutten"}&phone=${"477440329"}&email=${"rutten.oskar@gmail.com"}&employer=${''}&car=${SELECTED_VEHICLE}&businessUse=${BUSINESS_USAGE}&term=${LEASE_PERIOD/12}&income=${roundoff(OVERALL_INCOME_TAX_SAVING)}&carPrice=${DRIVE_AWAY_PRICE}&fbtMethod=${METHOD}&electricty=${ELECTRICITY_FEE}&service=${MAINTENANCE_FEE}&insurance=${INSURANCE_FEE}&regisration=${REGISTRATION_FEE}&tyres=${TYRES_FEE}&roadside=${ROADSIDE_FEE}&incidentalother=${OTHERS_FEE}&carColour=${''}&quoteCPW=${roundoff(COST_PER_WEEK)}&savingsPm=${roundoff(OVERALL_INCOME_TAX_SAVING)}&kmPerYear=${KM_PER_YEAR}&totalSavedTax=${roundoff(TOTAL_SAVING_OVERALL)}`
         location.href = URL
     }
     initialize();
