@@ -209,7 +209,7 @@ const businessUseValue = document.getElementById('business-use-value')
     METHOD = vehicle.driveAwayPrice < 94000? 'FBT Exempt Method': vehicle.driveAwayPrice>94000? 'Operating Cost Method' : 'Statutory Method'
 
     BUSINESS_USAGE = METHOD === 'Operating Cost Method' ? businessSlider.value/100: 20/100;
-    businessUseValue.value = BUSINESS_USAGE + ' %'
+    businessUseValue.innerHTML = BUSINESS_USAGE + ' %'
 
     taxableSliderValue.innerHTML = taxableSlider.value
     annualKmsValue.innerHTML = annualKms.value
@@ -571,7 +571,7 @@ async function  updateAllValues(){
     updateMethod()
 
     BUSINESS_USAGE = METHOD === 'Operating Cost Method' ? businessSlider.value/100: 20/100;
-    businessUseValue.value = BUSINESS_USAGE + ' %'
+    businessUseValue.innerHTML = BUSINESS_USAGE + ' %'
   
 
   	taxableSliderValue.innerHTML = `$${taxableSlider.value}/year`
