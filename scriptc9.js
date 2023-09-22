@@ -543,6 +543,7 @@ const methodSwitch = document.getElementById('Checkbox-2')
         }else if(driveAway.value > 94000){
             METHOD = 'Operating Cost Method'
             document.getElementById('FBT_Slider').classList.remove('closed')
+            document.getElementById('monthlyBudgetWrap').classList.remove('closed')
             document.getElementById('method-name').innerText = 'Operating Cost Method'
 
             const businessSlider = document.getElementById('business-slider')
@@ -589,12 +590,13 @@ async function  updateAllValues(){
     
     await calculateSaving()
     
-    document.getElementById('savings').innerHTML = TOTAL_SAVING_MONTHLY?TOTAL_SAVING_MONTHLY.toFixed(2):0
+    document.getElementById('monthlyBudgetVal').innerHTML = `MonthlyBudget - $${COST_PER_MONTH}`
+    document.getElementById('savings').innerHTML = TOTAL_SAVING_MONTHLY?TOTAL_SAVING_MONTHLY.toFixed(0):0
 
     if(leaseTerm.value<3){
-        document.getElementById('package-small-savings').innerText =`Up to $${TOTAL_SAVING_ANNUAL.toFixed(2)} Saved`
+        document.getElementById('package-small-savings').innerText =`Up to $${TOTAL_SAVING_ANNUAL.toFixed(0)} Saved`
     }else{
-        document.getElementById('package-large-savings').innerText = `Up to $${TOTAL_SAVING_ANNUAL.toFixed(2)} Saved`
+        document.getElementById('package-large-savings').innerText = `Up to $${TOTAL_SAVING_ANNUAL.toFixed(0)} Saved`
 
     }
   }
