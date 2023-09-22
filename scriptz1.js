@@ -1153,17 +1153,22 @@ async function  updateAllValues(costItem){
 
     document.getElementById('get-quote-button').addEventListener('click', gotoForm)
 
+    document.getElementById('package-small').addEventListener('click',()=>{ leaseTerm.value = 1; updateAllValues(false)})
+    document.getElementById('package-medium').addEventListener('click',()=>{ leaseTerm.value = 3; updateAllValues(false)})
+    document.getElementById('package-large').addEventListener('click',()=>{ leaseTerm.value = 5; updateAllValues(false)})
+
 
     updateAllValues(false)
   }
-  initialize();
 
+  
   function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
-
+    
     function gotoForm(){
         const URL = `/form?firstName=${"oskar"}&lastName=${"rutten"}&phone=${"477440329"}&email=${"rutten.oskar@gmail.com"}&employer=${''}&car=${SELECTED_VEHICLE}&businessUse=${BUSINESS_USAGE}&term=${LEASE_PERIOD/12}&income=${OVERALL_INCOME_TAX_SAVING}&carPrice=${DRIVE_AWAY_PRICE}&fbtMethod=${METHOD}&electricty=${ELECTRICITY_FEE}&service=${MAINTENANCE_FEE}&insurance=${INSURANCE_FEE}&regisration=${REGISTRATION_FEE}&tyres=${TYRES_FEE}&roadside=${ROADSIDE_FEE}&incidentalother=${OTHERS_FEE}&carColour=${''}&quoteCPM=${COST_PER_MONTH}&savingsPm=${OVERALL_INCOME_TAX_SAVING}`
         location.href = URL
     }
+    initialize();
 }
